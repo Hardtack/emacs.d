@@ -34,7 +34,7 @@
         path nil)))
 
 ;; Install useful packages
-(defcustom useful-python-packages '("flake8" "jedi") "Useful python packages")
+(defcustom useful-python-packages '("flake8" "pylint" "jedi" "epc") "Useful python packages")
 
 (defun venv-install-packages (first &rest rest)
   "Install package to venv."
@@ -48,7 +48,7 @@
 (defun venv-install-useful-packages ()
   "Install useful pacakges to venv."
   (interactive)
-  (venv-install-packages "flake8" "pylint" "jedi"))
+  (apply 'venv-install-packages useful-python-packages))
 
 ;; flycheck
 (defun get-current-flake8 ()
@@ -78,6 +78,14 @@
     (flycheck-disable-checker 'python-pylint)))
 (add-hook 'flycheck-before-syntax-check-hook
           #'set-flychecker-executables 'local)
+
+;;; Jedi
+(require-package 'jedi)
+(require 'jedi)
+(setq jedi:setup-keys t)
+(setq jedi:complete-on-dot t)
+
+(add-hook 'python-mode-hook 'jedi:setup)
 
 
 ;;; RST for docstring
