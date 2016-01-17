@@ -4,6 +4,8 @@
               auto-mode-alist))
 
 (require-package 'pip-requirements)
+
+;;; Virtualenv setup
 (require-package 'virtualenvwrapper)
 
 (require 'virtualenvwrapper)
@@ -19,7 +21,66 @@
 ;; Displaying the currently active virtualenv on the mode line
 (setq-default mode-line-format (cons '(:exec venv-current-name) mode-line-format))
 
-;; RST for docstring
+;; Utility
+(defun venv-executable-find (exec)
+  "Get current path for exec based on venv."
+  (interactive)
+  (let ((path (if venv-current-dir
+                  (concat (file-name-as-directory venv-current-dir)
+                          (file-name-as-directory "bin")
+                          exec)
+                (executable-find exec))))
+    (if (file-exists-p path)
+        path nil)))
+
+;; Install useful packages
+(defcustom useful-python-packages '("flake8" "jedi") "Useful python packages")
+
+(defun venv-install-packages (first &rest rest)
+  "Install package to venv."
+  (when (not (venv-executable-find "pip"))
+    (error "pip not found."))
+  (let ((command (concat (venv-executable-find "pip")
+                         " install "
+                         (mapconcat 'identity (cons first rest) " "))))
+    (shell-command command)))
+
+(defun venv-install-useful-packages ()
+  "Install useful pacakges to venv."
+  (interactive)
+  (venv-install-packages "flake8" "pylint" "jedi"))
+
+;; flycheck
+(defun get-current-flake8 ()
+  "Get current path for flake8 based on venv."
+  (interactive)
+  (venv-executable-find "flake8"))
+(defun get-current-pylint ()
+  "Get current path for pylint based on venv."
+  (interactive)
+  (venv-executable-find "pylint"))
+
+
+(defun set-flychecker-executables ()
+  "Configure virtualenv for flake8 and lint."
+  (if (get-current-flake8)
+      (progn (setq flycheck-disabled-checkers
+                   (remove 'python-flake8 flycheck-disabled-checkers))
+             (flycheck-set-checker-executable 'python-flake8
+                                              (get-current-flake8)))
+    (flycheck-disable-checker 'python-flake8))
+  (if (get-current-pylint)
+      (progn (setq flycheck-disabled-checkers
+                   (remove 'python-pylint flycheck-disabled-checkers))
+             (flycheck-set-checker-executable 'python-pylint
+                                              (get-current-pylint)))
+
+    (flycheck-disable-checker 'python-pylint)))
+(add-hook 'flycheck-before-syntax-check-hook
+          #'set-flychecker-executables 'local)
+
+
+;;; RST for docstring
 (require 'python)
 
 (defun rst-python-docstrings-find-front (bound)
