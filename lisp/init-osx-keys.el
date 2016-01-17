@@ -19,6 +19,8 @@ If point was already at that position, move point to beginning of line."
      nil 'fullscreen
      (when (not (frame-parameter nil 'fullscreen)) 'fullboth)))
   (global-set-key (kbd "<s-return>") 'toggle-fullscreen-osx)
+  ;; <C-s-268632070> means ^-⌘-f
+  (global-set-key (kbd "<C-s-268632070>") 'toggle-fullscreen-osx)
 
   ;; Command-arrow
   (global-set-key [home] 'smart-beginning-of-line)
