@@ -17,6 +17,6 @@
   (set-selection-coding-system (if (eq system-type 'windows-nt) 'utf-16-le 'utf-8))
   (prefer-coding-system 'utf-8))
 
-(setenv "LC_CTYPE" "UTF-8")
+(setenv "LC_CTYPE" "ko_KR.UTF-8")
 
 (provide 'init-locales)
