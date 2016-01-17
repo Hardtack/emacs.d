@@ -262,7 +262,22 @@ With arg N, insert N newlines."
     (end-of-line)
     (indent-according-to-mode)))
 
-(global-set-key (kbd "C-o") 'sanityinc/open-line-with-reindent)
+
+(defun end-of-line-and-new-line ()
+  "Move to end of file and make new line."
+  (interactive)
+  (end-of-line)
+  (newline-and-indent))
+(defun beginning-of-line-and-new-line ()
+  "Move to beginning of file and make new line."
+  (interactive)
+  (beginning-of-line)
+  (newline)
+  (forward-line -1)
+  (indent-for-tab-command))
+
+(global-set-key (kbd "C-o") 'end-of-line-and-new-line)
+(global-set-key (kbd "M-o") 'beginning-of-line-and-new-line)
 
 
 ;;----------------------------------------------------------------------------
