@@ -17,6 +17,7 @@
 (require-package 'default-text-scale)
 (global-set-key (kbd "C-M-=") 'default-text-scale-increase)
 (global-set-key (kbd "C-M--") 'default-text-scale-decrease)
+(set-face-attribute 'default nil :height 140)
 
 
 (defun sanityinc/maybe-adjust-visual-fill-column ()
