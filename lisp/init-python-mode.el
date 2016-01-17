@@ -5,6 +5,16 @@
 
 (require-package 'pip-requirements)
 
+
+;;; 79 columns
+(require-package 'fill-column-indicator)
+(require 'fill-column-indicator)
+
+(defun python-fci-hook ()
+  (setq-local fci-rule-column 79)
+  (fci-mode))
+(add-hook 'python-mode-hook 'python-fci-hook)
+
 ;;; Virtualenv setup
 (require-package 'virtualenvwrapper)
 
