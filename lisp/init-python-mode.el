@@ -65,6 +65,11 @@
             command)))
   (display-buffer "*pip installation*"))
 
+(defun venv-install-requirements (path)
+  "Install package in requirements.txt"
+  (interactive (list (read-file-name "Path for requirement.txt: ")))
+  (venv-install-packages "-r" path))
+
 (defun venv-install-useful-packages ()
   "Install useful pacakges to venv."
   (interactive)
