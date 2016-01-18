@@ -56,10 +56,14 @@
   "Install package to venv."
   (when (not (venv-executable-find "pip"))
     (error "pip not found."))
-  (let ((command (concat (venv-executable-find "pip")
-                         " install "
-                         (mapconcat 'identity (cons first rest) " "))))
-    (shell-command command)))
+  (let ((command (append (list (venv-executable-find "pip")
+                               "install")
+                         (cons first rest))))
+    (apply 'start-process
+           (append
+            '("pip" "*pip installation*")
+            command)))
+  (display-buffer "*pip installation*"))
 
 (defun venv-install-useful-packages ()
   "Install useful pacakges to venv."
