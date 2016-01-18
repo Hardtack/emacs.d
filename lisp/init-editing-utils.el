@@ -337,7 +337,7 @@ With arg N, insert N newlines."
 (setq auto-save-file-name-transforms
       `((".*" ,(concat (file-name-as-directory user-emacs-directory)
                        (file-name-as-directory "autosaves")
-                       "\\1"))))
+                       "\\1") t)))
 (make-directory (concat (file-name-as-directory user-emacs-directory) "autosaves") t)
 
 
