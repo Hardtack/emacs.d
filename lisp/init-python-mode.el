@@ -29,7 +29,13 @@
                                 (venv-workon project-venv-name))))
 
 ;; Displaying the currently active virtualenv on the mode line
-(setq-default mode-line-format (cons '(:exec venv-current-name) mode-line-format))
+(setq-default mode-line-format
+              (cons
+               '(:eval
+                 (if venv-current-name
+                     (format "venv:%s" venv-current-name)
+                   ""))
+               mode-line-format))
 
 ;; Utility
 (defun venv-executable-find (exec)
