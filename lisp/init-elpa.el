@@ -82,10 +82,6 @@ locate PACKAGE."
 
 
 
-(require-package 'fullframe)
-(fullframe list-packages quit-window)
-
-
 (require-package 'cl-lib)
 (require 'cl-lib)
 
