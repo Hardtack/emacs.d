@@ -13,8 +13,10 @@
 (defun projectile-speedbar-toggle ()
   (interactive)
   (if (sr-speedbar-exist-p)
-      (sr-speedbar-toggle)
-    (call-interactively 'projectile-speedbar-open-current-buffer-in-tree)))
+      (sr-speedbar-close)
+    (progn
+      (projectile-speedbar-open-current-buffer-in-tree)
+      (sr-speedbar-select-window))))
 
 (global-set-key (kbd "C-x p") 'projectile-speedbar-toggle)
 (setq speedbar-frame-parameters
