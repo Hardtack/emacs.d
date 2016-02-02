@@ -129,6 +129,9 @@
 ;;----------------------------------------------------------------------------
 ;; Handy key bindings
 ;;----------------------------------------------------------------------------
+;; "ESC ESC ESC" annoys me
+;(global-set-key (kbd "ESC ESC ESC") 'keyboard-quit);; Select all
+(global-set-key (kbd "C-a") 'mark-whole-buffer)
 ;; To be able to M-x without meta
 (global-set-key (kbd "C-x C-m") 'execute-extended-command)
 
@@ -303,9 +306,11 @@ With arg N, insert N newlines."
 
 
 (require-package 'guide-key)
+(require-package 'guide-key-tip)
+(require 'guide-key)
+(require 'guide-key-tip)
 (setq guide-key/guide-key-sequence '("C-x" "C-c" "C-x 4" "C-x 5" "C-c ;" "C-c ; f" "C-c ' f" "C-x n" "C-x C-r" "C-x r"))
-(guide-key-mode 1)
-(diminish 'guide-key-mode)
+(setq guide-key-tip/enabled t)
 
 
 ;;; Line number
