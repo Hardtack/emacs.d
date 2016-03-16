@@ -49,6 +49,10 @@
 
 (add-to-list 'interpreter-mode-alist (cons "node" preferred-javascript-mode))
 
+;; jsx-mode
+(add-to-list 'auto-mode-alist '("\\.jsx?\\'" . js2-jsx-mode))
+(add-to-list 'interpreter-mode-alist '("node" . js2-jsx-mode))
+
 
 ;; Javascript nests {} and () a lot, so I find this helpful
 
