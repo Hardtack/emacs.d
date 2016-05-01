@@ -1,0 +1,3 @@
+[submodule "site-lisp/tabbar-ruler"]
+	path = site-lisp/tabbar-ruler
+	url = https://github.com/mattfidler/tabbar-ruler.el.git

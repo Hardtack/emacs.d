@@ -319,7 +319,6 @@ With arg N, insert N newlines."
 
 ;; Tabbar
 (require-package 'tabbar)
-(require-package 'tabbar-ruler)
 (require 'tabbar)
 (require 'tabbar-ruler)
 
