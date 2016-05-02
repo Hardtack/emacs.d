@@ -112,6 +112,12 @@
 
 (add-hook 'python-mode-hook 'jedi:setup)
 
+;; Additional keys
+(defun geonu/add-python-keys ()
+  "Add custom keys for python-mode."
+  (local-set-key (kbd "C-c d") 'jedi:show-doc))
+(add-hook 'python-mode-hook 'geonu/add-python-keys)
+
 
 ;;; RST for docstring
 (require 'python)
