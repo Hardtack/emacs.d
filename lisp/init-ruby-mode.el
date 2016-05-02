@@ -70,6 +70,14 @@
 
 
 
+;; Cutom keys
+(defun geonu/add-ruby-keys ()
+  "Add custom keys for ruby-mode"
+  (local-set-key (kbd "C-c .") 'robe-jump)
+  (local-set-key (kbd "C-c d") 'robe-show-doc))
+(add-hook 'ruby-mode-hook 'geonu/add-ruby-keys)
+
+
 ;; Customise highlight-symbol to not highlight do/end/class/def etc.
 (defun sanityinc/suppress-ruby-mode-keyword-highlights ()
   "Suppress highlight-symbol for do/end etc."
