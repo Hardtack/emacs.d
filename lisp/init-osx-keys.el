@@ -41,7 +41,7 @@ If point was already at that position, move point to beginning of line."
   (global-set-key (kbd "s-Z") 'undo-tree-redo)
   (global-set-key (kbd "<s-up>") 'beginning-of-buffer)
   (global-set-key (kbd "<s-down>") 'end-of-buffer)
-  (global-set-key (kbd "<s-left>") 'smart-beginning-of-line)
+  (global-set-key (kbd "<s-left>") 'beginning-of-line)
   (global-set-key (kbd "<s-right>") 'end-of-line)
   (after-load 'nxml-mode
     (define-key nxml-mode-map (kbd "M-h") nil))
