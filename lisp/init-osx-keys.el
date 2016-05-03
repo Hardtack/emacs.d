@@ -43,6 +43,10 @@ If point was already at that position, move point to beginning of line."
   (global-set-key (kbd "<s-down>") 'end-of-buffer)
   (global-set-key (kbd "<s-left>") 'beginning-of-line)
   (global-set-key (kbd "<s-right>") 'end-of-line)
+  (global-set-key (kbd "<M-s-up>") 'enlarge-window)
+  (global-set-key (kbd "<M-s-down>") 'shrink-window)
+  (global-set-key (kbd "<M-s-right>") 'enlarge-window-horizontally)
+  (global-set-key (kbd "<M-s-left>") 'shrink-window-horizontally)
   (after-load 'nxml-mode
     (define-key nxml-mode-map (kbd "M-h") nil))
   (global-set-key (kbd "M-ˍ") 'ns-do-hide-others) ;; what describe-key reports for cmd-option-h
