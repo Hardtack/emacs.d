@@ -24,6 +24,7 @@ If point was already at that position, move point to beginning of line."
 
   ;; Command-arrow
   (global-set-key [home] 'smart-beginning-of-line)
+  (global-set-key [end] 'end-of-line)
   (global-set-key "\C-a" 'smart-beginning-of-line)
 
   (setq default-input-method "MacOSX")
@@ -43,8 +44,8 @@ If point was already at that position, move point to beginning of line."
   (global-set-key (kbd "<s-down>") 'end-of-buffer)
   (global-set-key (kbd "<s-left>") 'beginning-of-line)
   (global-set-key (kbd "<s-right>") 'end-of-line)
-  (global-set-key (kbd "<M-s-up>") 'enlarge-window)
-  (global-set-key (kbd "<M-s-down>") 'shrink-window)
+  (global-set-key (kbd "<M-s-up>") 'shrink-window)
+  (global-set-key (kbd "<M-s-down>") 'enlarge-window)
   (global-set-key (kbd "<M-s-right>") 'enlarge-window-horizontally)
   (global-set-key (kbd "<M-s-left>") 'shrink-window-horizontally)
   (after-load 'nxml-mode
