@@ -329,6 +329,11 @@ With arg N, insert N newlines."
 
 
 
+;; Scrolling
+(setq scroll-step 1)
+(setq scroll-conservatively 10000)
+
+
 ;; Backup
 (setq backup-directory-alist
       `(("." . ,(concat (file-name-as-directory user-emacs-directory) "backups"))))
