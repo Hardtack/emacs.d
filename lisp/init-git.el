@@ -74,5 +74,11 @@
 (require-package 'git-messenger)
 (global-set-key (kbd "C-x v p") #'git-messenger:popup-message)
 
+
+;;; git-flow support
+(require-package 'magit-gitflow)
+(require 'magit-gitflow)
+(add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
+
 
 (provide 'init-git)
