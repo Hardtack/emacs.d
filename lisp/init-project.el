@@ -9,13 +9,20 @@
 (require 'sr-speedbar)
 (require 'projectile-speedbar)
 
+(defun open-speedbar-for-current-buffer ()
+  (interactive)
+  (unless (condition-case nil
+              (projectile-speedbar-open-current-buffer-in-tree)
+            (error nil))
+    (sr-speedbar-open)))
+
 ;; Redef
 (defun projectile-speedbar-toggle ()
   (interactive)
   (if (sr-speedbar-exist-p)
       (sr-speedbar-close)
     (progn
-      (projectile-speedbar-open-current-buffer-in-tree)
+      (open-speedbar-for-current-buffer)
       (sr-speedbar-select-window))))
 
 (global-set-key (kbd "C-x p") 'projectile-speedbar-toggle)
