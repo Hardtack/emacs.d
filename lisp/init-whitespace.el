@@ -30,6 +30,7 @@
 (require 'indent-guide)
 (indent-guide-global-mode)
 (setq indent-guide-recursive t)
+(setq indent-guide-threshold 0)
 
 
 (provide 'init-whitespace)
