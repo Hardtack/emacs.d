@@ -7,6 +7,7 @@
                "\\.rjs\\'" "\\.irbrc\\'" "\\.pryrc\\'" "\\.builder\\'" "\\.ru\\'"
                "\\.gemspec\\'" "Gemfile\\'" "Kirkfile\\'")
 
+(setq ruby-insert-encoding-magic-comment nil)
 (setq ruby-use-encoding-map nil)
 
 (after-load 'ruby-mode
