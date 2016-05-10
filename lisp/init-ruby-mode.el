@@ -28,6 +28,18 @@
 (after-load 'page-break-lines
   (push 'ruby-mode page-break-lines-modes))
 
+
+
+;;; 80 columns
+(require-package 'fill-column-indicator)
+(require 'fill-column-indicator)
+
+(defun ruby-fci-hook ()
+  (setq-local fci-rule-column 80)
+  (fci-mode))
+(add-hook 'ruby-mode-hook 'ruby-fci-hook)
+
+
 
 ;;; Inferior ruby
 (require-package 'inf-ruby)
