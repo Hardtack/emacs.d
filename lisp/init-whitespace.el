@@ -15,6 +15,7 @@
                 comint-mode-hook
                 compilation-mode-hook
                 twittering-mode-hook
+                eshell-mode-hook
                 minibuffer-setup-hook))
   (add-hook hook #'sanityinc/no-trailing-whitespace))
 
