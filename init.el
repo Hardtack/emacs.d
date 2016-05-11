@@ -11,7 +11,7 @@
 ;;----------------------------------------------------------------------------
 ;; Temporarily reduce garbage collection during startup
 ;;----------------------------------------------------------------------------
-(setq gc-cons-threshold (* 24 1024 1024))
+(setq gc-cons-threshold (* 10 1024 1024))
 
 (defconst sanityinc/initial-gc-cons-threshold gc-cons-threshold
   "Initial value of `gc-cons-threshold' at start-up time.")
@@ -60,7 +60,6 @@
 
 (require 'init-recentf)
 (require 'init-ido)
-(require 'init-hippie-expand)
 (require 'init-auto-complete)
 (require 'init-windows)
 (require 'init-sessions)
@@ -91,16 +90,12 @@
 (require 'init-css)
 (require 'init-haml)
 (require 'init-python-mode)
-(require 'init-haskell)
-(require 'init-elm)
 (require 'init-ruby-mode)
 (require 'init-rails)
 (require 'init-sql)
 
 (require 'init-paredit)
 (require 'init-lisp)
-(require 'init-slime)
-(require 'init-common-lisp)
 
 (when *spell-check-support-enabled*
   (require 'init-spelling))
@@ -108,11 +103,8 @@
 (require 'init-misc)
 
 (require 'init-dash)
-(require 'init-ledger)
 ;; Extra packages which don't require any configuration
 
-(require-package 'gnuplot)
-(require-package 'lua-mode)
 (require-package 'htmlize)
 (require-package 'dsvn)
 (when *is-a-mac*

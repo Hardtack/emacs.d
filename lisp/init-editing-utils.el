@@ -74,25 +74,6 @@
       ad-do-it)))
 
 ;;----------------------------------------------------------------------------
-;; Zap *up* to char is a handy pair for zap-to-char
-;;----------------------------------------------------------------------------
-(autoload 'zap-up-to-char "misc" "Kill up to, but not including ARGth occurrence of CHAR.")
-(global-set-key (kbd "M-Z") 'zap-up-to-char)
-
-
-
-(require-package 'browse-kill-ring)
-(setq browse-kill-ring-separator "\f")
-(global-set-key (kbd "M-Y") 'browse-kill-ring)
-(after-load 'browse-kill-ring
-  (define-key browse-kill-ring-mode-map (kbd "C-g") 'browse-kill-ring-quit)
-  (define-key browse-kill-ring-mode-map (kbd "M-n") 'browse-kill-ring-forward)
-  (define-key browse-kill-ring-mode-map (kbd "M-p") 'browse-kill-ring-previous))
-(after-load 'page-break-lines
-  (push 'browse-kill-ring-mode page-break-lines-modes))
-
-
-;;----------------------------------------------------------------------------
 ;; Don't disable narrowing commands
 ;;----------------------------------------------------------------------------
 (put 'narrow-to-region 'disabled nil)
@@ -103,13 +84,6 @@
 ;; Show matching parens
 ;;----------------------------------------------------------------------------
 (show-paren-mode 1)
-
-;;----------------------------------------------------------------------------
-;; Expand region
-;;----------------------------------------------------------------------------
-(require-package 'expand-region)
-(global-set-key (kbd "C-=") 'er/expand-region)
-
 
 ;;----------------------------------------------------------------------------
 ;; Don't disable case-change functions
@@ -127,8 +101,6 @@
 ;;----------------------------------------------------------------------------
 ;; Handy key bindings
 ;;----------------------------------------------------------------------------
-;; "ESC ESC ESC" annoys me
-;(global-set-key (kbd "ESC ESC ESC") 'keyboard-quit);; Select all
 (global-set-key (kbd "C-a") 'mark-whole-buffer)
 ;; To be able to M-x without meta
 (global-set-key (kbd "C-x C-m") 'execute-extended-command)
@@ -169,7 +141,6 @@
     (kill-region (point) prev-pos)))
 
 (global-set-key (kbd "C-M-<backspace>") 'kill-back-to-indentation)
-
 
 ;;----------------------------------------------------------------------------
 ;; Page break lines
@@ -277,22 +248,6 @@ With arg N, insert N newlines."
 (global-set-key (kbd "M-o") 'beginning-of-line-and-new-line)
 
 
-;;----------------------------------------------------------------------------
-;; Random line sorting
-;;----------------------------------------------------------------------------
-(defun sort-lines-random (beg end)
-  "Sort lines in region randomly."
-  (interactive "r")
-  (save-excursion
-    (save-restriction
-      (narrow-to-region beg end)
-      (goto-char (point-min))
-      (let ;; To make `end-of-line' and etc. to ignore fields.
-          ((inhibit-field-text-motion t))
-        (sort-subr nil 'forward-line 'end-of-line nil nil
-                   (lambda (s1 s2) (eq (random 2) 0)))))))
-
-
 
 
 (require-package 'highlight-escape-sequences)
@@ -310,16 +265,12 @@ With arg N, insert N newlines."
 ;;; Line number
 (require-package 'linum)
 (global-linum-mode)
-(setq linum-format "%3d ")
+(setq linum-format "%3d")
 
 
 ;; Tabbar
 (require-package 'tabbar)
 (require 'tabbar)
-(require 'tabbar-ruler)
-
-(setq tabbar-ruler-global-tabbar t)
-(global-set-key (kbd "C-x t") 'tabbar-ruler-move)
 
 (tabbar-mode)
 (global-set-key [C-left] 'tabbar-backward-tab)

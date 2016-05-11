@@ -25,12 +25,4 @@
 
 (global-set-key [remap just-one-space] 'cycle-spacing)
 
-;; Indentation guide
-(require-package 'indent-guide)
-(require 'indent-guide)
-(indent-guide-global-mode)
-(setq indent-guide-recursive t)
-(setq indent-guide-threshold 0)
-
-
 (provide 'init-whitespace)
