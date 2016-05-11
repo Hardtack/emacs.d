@@ -265,7 +265,7 @@ With arg N, insert N newlines."
 ;;; Line number
 (require-package 'linum)
 (global-linum-mode)
-(setq linum-format "%3d")
+(setq linum-format "%3d ")
 
 
 ;; Tabbar
@@ -278,6 +278,14 @@ With arg N, insert N newlines."
 (global-set-key (kbd "C-x <left>") 'tabbar-backward-tab)
 (global-set-key (kbd "C-x <right>") 'tabbar-forward-tab)
 
+(require-package 'tabbar-ruler)
+(require 'tabbar-ruler)
+(setq tabbar-ruler-global-tabbar t)
+(setq tabbar-ruler-popup-menu t)
+(setq tabbar-ruler-popup-toolbar t)
+(setq tabbar-ruler-popup-scrollbar t)
+(tabbar-ruler-group-buffer-groups)
+(tabbar-ruler-group-by-projectile-project)
 
 
 ;; Scrolling

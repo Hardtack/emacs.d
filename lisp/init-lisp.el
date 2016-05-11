@@ -157,9 +157,7 @@
   (defun sanityinc/adjust-parens-setup ()
     (when (fboundp 'lisp-indent-adjust-parens)
       (set (make-local-variable 'adjust-parens-fallback-dedent-function) 'ignore)
-      (set (make-local-variable 'adjust-parens-fallback-indent-function) 'ignore)
-      (local-set-key (kbd "<M-left>") 'lisp-dedent-adjust-parens)
-      (local-set-key (kbd "<M-right>") 'lisp-indent-adjust-parens)))
+      (set (make-local-variable 'adjust-parens-fallback-indent-function) 'ignore)))
 
   (add-to-list 'sanityinc/lispy-modes-hook 'sanityinc/adjust-parens-setup))
 
