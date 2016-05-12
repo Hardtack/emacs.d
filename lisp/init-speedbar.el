@@ -34,9 +34,10 @@
 
 (defun speedbar-toggle-or-edit-line ()
   (interactive)
-  (if (file-directory-p (speedbar-line-file))
-      (speedbar-toggle-line-expansion)
-    (speedbar-edit-line)))
+  (let ((file (speedbar-line-file)))
+    (if (or (not file) (file-directory-p file))
+        (speedbar-toggle-line-expansion)
+      (speedbar-edit-line))))
 
 (defun geonu/add-speedbar-keys ()
   (local-set-key (kbd "<return>") 'speedbar-toggle-or-edit-line))
