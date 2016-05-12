@@ -65,6 +65,7 @@
 (require 'init-fonts)
 (require 'init-mmm)
 (require 'init-project)
+(require 'init-speedbar)
 
 (require 'init-editing-utils)
 (require 'init-whitespace)
