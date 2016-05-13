@@ -76,6 +76,7 @@
 (require 'init-git)
 (require 'init-github)
 
+(require 'init-realgud)
 (require 'init-compile)
 (require 'init-markdown)
 (require 'init-csv)
