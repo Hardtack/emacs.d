@@ -34,7 +34,7 @@
 
 (defun speedbar-toggle-or-edit-line ()
   (interactive)
-  (let ((file (speedbar-line-file)))
+  (let* ((file (speedbar-line-file)))
     (if (or (not file) (file-directory-p file))
         (speedbar-toggle-line-expansion)
       (speedbar-edit-line))))
