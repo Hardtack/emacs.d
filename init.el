@@ -60,6 +60,7 @@
 (require 'init-recentf)
 (require 'init-ido)
 (require 'init-auto-complete)
+(require 'init-snippet)
 (require 'init-windows)
 (require 'init-sessions)
 (require 'init-fonts)

@@ -36,12 +36,12 @@
 (add-hook 'auto-complete-mode-hook 'set-auto-complete-as-completion-at-point-function)
 
 
-(set-default 'ac-sources
-             '(ac-source-imenu
-               ac-source-dictionary
-               ac-source-words-in-buffer
-               ac-source-words-in-same-mode-buffers
-               ac-source-words-in-all-buffer))
+(setq-default ac-sources
+	      '(ac-source-imenu
+		ac-source-dictionary
+		ac-source-words-in-buffer
+		ac-source-words-in-same-mode-buffers
+		ac-source-words-in-all-buffer))
 
 (dolist (mode '(log-edit-mode org-mode text-mode haml-mode
                 git-commit-mode
