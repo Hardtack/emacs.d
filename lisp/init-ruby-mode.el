@@ -104,6 +104,16 @@
 (require-package 'yari)
 (defalias 'ri 'yari)
 
+
+;;; projectile-rails
+(require-package 'projectile-rails)
+(require 'projectile-rails)
+(add-hook 'projectile-mode-hook 'projectile-rails-on)
+
+
+;;; bundle
+(require-package 'bundler)
+
 
 
 ;;; YAML
