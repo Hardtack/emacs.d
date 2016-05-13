@@ -28,6 +28,13 @@
 (after-load 'page-break-lines
   (push 'ruby-mode page-break-lines-modes))
 
+
+;;; Use RVM
+(require-package 'rvm)
+(require 'rvm)
+(when (rvm-working-p)
+  (rvm-use-default))
+
 
 
 ;;; 80 columns
@@ -105,10 +112,9 @@
 (defalias 'ri 'yari)
 
 
-;;; projectile-rails
-(require-package 'projectile-rails)
-(require 'projectile-rails)
-(add-hook 'projectile-mode-hook 'projectile-rails-on)
+;;; byebug
+(require-package 'realgud-byebug)
+(require 'realgud-byebug)
 
 
 ;;; bundle
