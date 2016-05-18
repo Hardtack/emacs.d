@@ -128,6 +128,8 @@
 
 
 ;;; ERB
+(require-package 'web-mode)
+(require 'web-mode)
 (setq erb-file-extensions '(".erb" ".rhtml" ".ejs"))
 (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.rhtml\\'" . web-mode))
