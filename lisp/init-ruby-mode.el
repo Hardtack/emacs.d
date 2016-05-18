@@ -74,6 +74,7 @@
 
 ;;; Robe
 (require 'robe)
+(require 'ac-robe)
 (after-load 'ruby-mode
   (add-hook 'ruby-mode-hook 'robe-mode))
 
