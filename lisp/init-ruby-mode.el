@@ -92,9 +92,7 @@
 
 ;; Cutom keys
 (defun geonu/add-ruby-keys ()
-  "Add custom keys for ruby-mode"
-  (local-set-key (kbd "C-c .") 'robe-jump)
-  (local-set-key (kbd "C-c d") 'robe-show-doc))
+  "Add custom keys for ruby-mode")
 (add-hook 'ruby-mode-hook 'geonu/add-ruby-keys)
 
 
@@ -168,7 +166,7 @@
 ;;          :delimiter-mode nil)))
 ;;      (mmm-add-mode-ext-class 'ruby-mode "\\.rb\\'" 'ruby-heredoc-sql)))
 
-;(add-to-list 'mmm-set-file-name-for-modes 'ruby-mode)
+;;(add-to-list 'mmm-set-file-name-for-modes 'ruby-mode)
 
 
 
