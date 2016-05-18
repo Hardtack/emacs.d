@@ -73,7 +73,7 @@
 
 
 ;;; Robe
-(require-package 'robe)
+(require 'robe)
 (after-load 'ruby-mode
   (add-hook 'ruby-mode-hook 'robe-mode))
 
