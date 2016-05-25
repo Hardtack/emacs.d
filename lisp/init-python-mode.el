@@ -46,8 +46,9 @@
                           (file-name-as-directory "bin")
                           exec)
                 (executable-find exec))))
-    (if (file-exists-p path)
-        path nil)))
+    (if (and path (file-exists-p path))
+        path
+      (executable-find exec))))
 
 ;; Install useful packages
 (defcustom useful-python-packages '("flake8" "pylint" "jedi" "epc") "Useful python packages")
