@@ -107,18 +107,15 @@
 
 ;;; Jedi
 (require-package 'jedi)
-(require 'jedi)
 (setq jedi:setup-keys t)
 (setq jedi:complete-on-dot t)
 
 (add-hook 'python-mode-hook 'jedi:setup)
 
 ;; Additional keys
-(defun geonu/add-python-keys ()
-  "Add custom keys for python-mode."
-  (local-set-key (kbd "C-c d") 'jedi:show-doc))
-(add-hook 'python-mode-hook 'geonu/add-python-keys)
-
+(setq jedi:key-goto-definition (kbd "M-."))
+(setq jedi:key-goto-definition-pop-marker (kbd "M-,"))
+(require 'jedi)
 
 ;;; RST for docstring
 (require 'python)
