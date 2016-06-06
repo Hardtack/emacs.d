@@ -88,6 +88,8 @@
 (require 'init-ruby-mode)
 (require 'init-rails)
 (require 'init-sql)
+(require 'init-clojure)
+(require 'init-clojure-cider)
 
 (require 'init-paredit)
 (require 'init-lisp)
