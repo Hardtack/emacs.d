@@ -113,8 +113,13 @@
 (add-hook 'python-mode-hook 'jedi:setup)
 
 ;; Additional keys
-(setq jedi:key-goto-definition (kbd "M-."))
-(setq jedi:key-goto-definition-pop-marker (kbd "M-,"))
+(defun geonu/add-python-keys ()
+  "Add custom keys for python-mode."
+  (local-set-key (kbd "M-.") 'jedi:goto-definition)
+  (local-set-key (kbd "M-,") 'jedi:goto-definition-pop-marker))
+(add-hook 'python-mode-hook 'geonu/add-python-keys)
+
+;; Done
 (require 'jedi)
 
 ;;; RST for docstring
