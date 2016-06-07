@@ -1,4 +1,6 @@
 ;;; Character sets
+(require-package 'dash)
+(require 'dash)
 
 (defcustom sanityinc/force-default-font-for-symbols nil
   "When non-nil, force Emacs to use your default font for symbols."
@@ -30,6 +32,11 @@ This is helpful for writeroom-mode, in particular."
 (add-hook 'visual-fill-column-mode-hook
           'sanityinc/maybe-adjust-visual-fill-column)
 
-
+(when (eq system-type 'darwin)
+  (set-face-attribute 'default nil :family "Menlo")
+  (setq korean-font-candidates '("D2Coding" "NanumGothicCoding" "Apple SD Gothic Neo"))
+  (let* ((korean-font (-first (lambda (font) (x-list-fonts font)) korean-font-candidates)))
+    (when korean-font
+      (set-fontset-font t 'hangul (font-spec :name korean-font)))))
 
 (provide 'init-fonts)
