@@ -32,11 +32,47 @@ This is helpful for writeroom-mode, in particular."
 (add-hook 'visual-fill-column-mode-hook
           'sanityinc/maybe-adjust-visual-fill-column)
 
-(when (eq system-type 'darwin)
-  (set-face-attribute 'default nil :family "Menlo")
-  (setq korean-font-candidates '("D2Coding" "NanumGothicCoding" "Apple SD Gothic Neo"))
-  (let* ((korean-font (-first (lambda (font) (x-list-fonts font)) korean-font-candidates)))
-    (when korean-font
-      (set-fontset-font t 'hangul (font-spec :name korean-font)))))
+(defcustom universal-font nil
+  "Font for universal characters.")
+(defcustom roman-font nil
+  "Font for roman chracters.")
+(defcustom korean-font nil
+  "Font for korean characters.")
+(defcustom universal-font-candidates '()
+  "Font candidates for universal-characters")
+(defcustom roman-font-candidates '()
+  "Font candidates for roman chracters.")
+(defcustom korean-font-candidates '()
+  "Font candidates for korean characters.")
+
+(defun geonu/select-first-existing-font (candidates)
+  "Select first installed font from CANDIDATES."
+  (-first (lambda (font) (x-list-fonts font)) candidates))
+
+(defun geonu/update-fonts ()
+  "Update fonts from customs"
+  (interactive)
+  (if universal-font
+      (set-face-attribute 'default nil :family universal-font)
+    (progn
+      (when roman-font (set-face-attribute 'default nil :family roman-font))
+      (when korean-font (set-fontset-font t 'hangul (font-spec :name korean-font))))))
+
+(defun geonu/update-fonts-from-global-candidates ()
+  "Update fonts from universal-font-candidates, roman-font-candidates, korean-font-candidates."
+  (interactive)
+  (setq universal-font (geonu/select-first-existing-font universal-font-candidates))
+  (setq roman-font (geonu/select-first-existing-font roman-font-candidates))
+  (setq korean-font (geonu/select-first-existing-font korean-font-candidates))
+  (geonu/update-fonts))
+
+(setq universal-font-candidates
+      '())
+(setq roman-font-candidates
+      '("Menlo" "Monaco" "Consolas"))
+(setq korean-font-candidates
+      '("D2Coding" "NanumGothicCoding" "Apple SD Gothic Neo"))
+
+(geonu/update-fonts-from-global-candidates)
 
 (provide 'init-fonts)
