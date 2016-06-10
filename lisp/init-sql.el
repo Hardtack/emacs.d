@@ -35,6 +35,7 @@
     (sql-product-font-lock nil nil)))
 (add-hook 'sql-interactive-mode-hook 'sanityinc/font-lock-everything-in-sql-interactive-mode)
 
+(setq sql-indent-offset 1)
 
 (after-load 'page-break-lines
   (push 'sql-mode page-break-lines-modes))
