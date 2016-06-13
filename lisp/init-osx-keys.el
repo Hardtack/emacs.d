@@ -27,7 +27,11 @@ If point was already at that position, move point to beginning of line."
   (global-set-key [end] 'end-of-line)
   (global-set-key "\C-a" 'smart-beginning-of-line)
 
+  ;; Close
+  (global-set-key (kbd "s-w") 'kill-this-buffer)
+
   (setq default-input-method "MacOSX")
+
   ;; Make mouse wheel / trackpad scrolling less jerky
   (setq mouse-wheel-scroll-amount '(1
                                     ((shift) . 5)
@@ -35,11 +39,12 @@ If point was already at that position, move point to beginning of line."
   (dolist (multiple '("" "double-" "triple-"))
     (dolist (direction '("right" "left"))
       (global-set-key (read-kbd-macro (concat "<" multiple "wheel-" direction ">")) 'ignore)))
-  (global-set-key (kbd "M-`") 'ns-next-frame)
-  (global-set-key (kbd "M-h") 'ns-do-hide-emacs)
-  (global-set-key (kbd "M-˙") 'ns-do-hide-others)
+
+  ;; Undo-tree
   (global-set-key (kbd "s-z") 'undo-tree-undo)
   (global-set-key (kbd "s-Z") 'undo-tree-redo)
+
+  ;; Resizing
   (global-set-key (kbd "<s-up>") 'beginning-of-buffer)
   (global-set-key (kbd "<s-down>") 'end-of-buffer)
   (global-set-key (kbd "<s-left>") 'beginning-of-line)
