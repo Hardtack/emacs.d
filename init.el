@@ -69,6 +69,7 @@
 (require 'init-speedbar)
 
 (require 'init-editing-utils)
+(require 'init-tabbar)
 (require 'init-whitespace)
 (require 'init-fci)
 
