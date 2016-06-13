@@ -21,12 +21,12 @@
 (require 'dash)
 
 (defun geonu/select-tab-at (index &optional tabset)
-  "Select tab of TABSET at INDEX."
+  "Select tab of TABSET at 1-base INDEX."
   (interactive "NIndex: ")
   (interactive "P")
   (let* ((tabset (if tabset tabset (tabbar-current-tabset)))
          (tabs (tabbar-tabs tabset))
-         (tab (nth index tabs)))
+         (tab (nth (- index 1) tabs)))
     (if tab (progn
               (tabbar-select-tab tab tabset)
               (when tabbar-select-tab-function
@@ -45,24 +45,24 @@
 
 (if *is-a-mac*
     (progn
-      (global-set-key (kbd "s-1") (lambda () (interactive) (geonu/select-tab-at 0)))
-      (global-set-key (kbd "s-2") (lambda () (interactive) (geonu/select-tab-at 1)))
-      (global-set-key (kbd "s-3") (lambda () (interactive) (geonu/select-tab-at 2)))
-      (global-set-key (kbd "s-4") (lambda () (interactive) (geonu/select-tab-at 3)))
-      (global-set-key (kbd "s-5") (lambda () (interactive) (geonu/select-tab-at 4)))
-      (global-set-key (kbd "s-6") (lambda () (interactive) (geonu/select-tab-at 5)))
-      (global-set-key (kbd "s-7") (lambda () (interactive) (geonu/select-tab-at 6)))
-      (global-set-key (kbd "s-8") (lambda () (interactive) (geonu/select-tab-at 7)))
+      (global-set-key (kbd "s-1") (lambda () (interactive) (geonu/select-tab-at 1)))
+      (global-set-key (kbd "s-2") (lambda () (interactive) (geonu/select-tab-at 2)))
+      (global-set-key (kbd "s-3") (lambda () (interactive) (geonu/select-tab-at 3)))
+      (global-set-key (kbd "s-4") (lambda () (interactive) (geonu/select-tab-at 4)))
+      (global-set-key (kbd "s-5") (lambda () (interactive) (geonu/select-tab-at 5)))
+      (global-set-key (kbd "s-6") (lambda () (interactive) (geonu/select-tab-at 6)))
+      (global-set-key (kbd "s-7") (lambda () (interactive) (geonu/select-tab-at 7)))
+      (global-set-key (kbd "s-8") (lambda () (interactive) (geonu/select-tab-at 8)))
       (global-set-key (kbd "s-9") 'geonu/select-last-tab))
   (progn
-    (global-set-key (kbd "C-1") (lambda () (interactive) (geonu/select-tab-at 0)))
-    (global-set-key (kbd "C-2") (lambda () (interactive) (geonu/select-tab-at 1)))
-    (global-set-key (kbd "C-3") (lambda () (interactive) (geonu/select-tab-at 2)))
-    (global-set-key (kbd "C-4") (lambda () (interactive) (geonu/select-tab-at 3)))
-    (global-set-key (kbd "C-5") (lambda () (interactive) (geonu/select-tab-at 4)))
-    (global-set-key (kbd "C-6") (lambda () (interactive) (geonu/select-tab-at 5)))
-    (global-set-key (kbd "C-7") (lambda () (interactive) (geonu/select-tab-at 6)))
-    (global-set-key (kbd "C-8") (lambda () (interactive) (geonu/select-tab-at 7)))
+    (global-set-key (kbd "C-1") (lambda () (interactive) (geonu/select-tab-at 1)))
+    (global-set-key (kbd "C-2") (lambda () (interactive) (geonu/select-tab-at 2)))
+    (global-set-key (kbd "C-3") (lambda () (interactive) (geonu/select-tab-at 3)))
+    (global-set-key (kbd "C-4") (lambda () (interactive) (geonu/select-tab-at 4)))
+    (global-set-key (kbd "C-5") (lambda () (interactive) (geonu/select-tab-at 5)))
+    (global-set-key (kbd "C-6") (lambda () (interactive) (geonu/select-tab-at 6)))
+    (global-set-key (kbd "C-7") (lambda () (interactive) (geonu/select-tab-at 7)))
+    (global-set-key (kbd "C-8") (lambda () (interactive) (geonu/select-tab-at 8)))
     (global-set-key (kbd "C-9") 'geonu/select-last-tab)))
 
 (provide 'init-tabbar)
