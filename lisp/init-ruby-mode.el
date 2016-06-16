@@ -73,6 +73,7 @@
 
 
 ;;; Robe
+(require-package 'robe)
 (require 'robe)
 (require 'ac-robe)
 (after-load 'ruby-mode
