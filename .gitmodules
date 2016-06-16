@@ -1,3 +1,9 @@
 [submodule "snippets/yasnippet-snippets"]
 	path = snippets/yasnippet-snippets
 	url = https://github.com/AndreaCrotti/yasnippet-snippets.git
+[submodule "site-lisp/realgud"]
+	path = site-lisp/realgud
+	url = https://github.com/realgud/realgud.git
+[submodule "site-lisp/realgud-byebug"]
+	path = site-lisp/realgud-byebug
+	url = https://github.com/realgud/realgud-byebug.git

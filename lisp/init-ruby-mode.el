@@ -113,7 +113,7 @@
 
 
 ;;; byebug
-(require-package 'realgud-byebug)
+(require 'realgud)
 (require 'realgud-byebug)
 
 
