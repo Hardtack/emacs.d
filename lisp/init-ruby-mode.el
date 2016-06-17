@@ -113,8 +113,6 @@
 
 
 ;;; byebug
-(require 'realgud)
-(require 'realgud-byebug)
 
 
 ;;; bundle
