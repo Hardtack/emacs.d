@@ -78,6 +78,7 @@
 (require 'init-github)
 
 (require 'init-compile)
+(require 'init-org)
 (require 'init-markdown)
 (require 'init-csv)
 (require 'init-javascript)
