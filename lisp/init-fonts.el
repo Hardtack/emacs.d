@@ -45,15 +45,20 @@ This is helpful for writeroom-mode, in particular."
 (defcustom korean-font-candidates '()
   "Font candidates for korean characters.")
 
+(defun geonu/font-exists-p (font)
+  "Check the existence of FONT in this machine."
+  (-> (x-list-fonts font) not not))
+
 (defun geonu/select-first-existing-font (candidates)
   "Select first installed font from CANDIDATES."
-  (-first (lambda (font) (x-list-fonts font)) candidates))
+  (-first #'geonu/font-exists-p candidates))
 
 (defun geonu/update-fonts ()
   "Update fonts from customs"
   (interactive)
   (if universal-font
-      (set-face-attribute 'default nil :family universal-font)
+      (progn (set-face-attribute 'default nil :family universal-font)
+             (set-fontset-font t 'hangul (font-spec :name universal-font)))
     (progn
       (when roman-font (set-face-attribute 'default nil :family roman-font))
       (when korean-font (set-fontset-font t 'hangul (font-spec :name korean-font))))))
@@ -66,6 +71,20 @@ This is helpful for writeroom-mode, in particular."
   (setq korean-font (geonu/select-first-existing-font korean-font-candidates))
   (geonu/update-fonts))
 
+(defun use-ugly-fixed-universal-font-off ()
+  "Don't use ugly fixed-size universal font."
+  (interactive)
+  (setq universal-font-candidates '())
+  (geonu/update-fonts-from-global-candidates))
+(defun use-ugly-fixed-universal-font ()
+  "Use ugly fixed-size universal font."
+  (interactive)
+  (when (not (geonu/select-first-existing-font ugly-universal-font-candidates))
+    (error "No fixed-sized universal fonts available."))
+  (setq universal-font-candidates ugly-universal-font-candidates)
+  (geonu/update-fonts-from-global-candidates))
+(setq ugly-universal-font-candidates
+      '("D2Coding"))
 (setq universal-font-candidates
       '())
 (setq roman-font-candidates
