@@ -22,7 +22,7 @@
  save-interprogram-paste-before-kill t
  set-mark-command-repeat-pop t
  tooltip-delay 1.5
- truncate-lines nil
+ truncate-lines t
  truncate-partial-width-windows nil)
 
 (global-auto-revert-mode)
@@ -30,6 +30,9 @@
       auto-revert-verbose nil)
 
 (transient-mark-mode t)
+
+;; truncate-lines for prog-mode
+(add-hook 'prog-mode-hook (lambda () (setq-local truncate-lines nil)))
 
 
 
