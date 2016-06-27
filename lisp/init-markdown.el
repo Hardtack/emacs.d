@@ -5,12 +5,18 @@
 (after-load 'whitespace-cleanup-mode
   (push 'markdown-mode whitespace-cleanup-mode-ignore-modes))
 
+;; Set GFM as default
+(setq auto-mode-alist (cons '("\\.md$" . gfm-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.mdown$" . gfm-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.mdt$" . gfm-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.markdown$" . gfm-mode) auto-mode-alist))
+
+;; Table
 (defun cleanup-org-tables ()
   (save-excursion
     (goto-char (point-min))
     (while (search-forward "-+-" nil t) (replace-match "-|-"))))
 
-;; Table
 (add-hook 'markdown-mode-hook 'orgtbl-mode)
 (add-hook 'markdown-mode-hook
           (lambda ()
