@@ -33,6 +33,7 @@
 
 ;; truncate-lines for prog-mode
 (add-hook 'prog-mode-hook (lambda () (setq-local truncate-lines nil)))
+(add-hook 'eshell-mode-hook (lambda () (setq-local truncate-lines nil)))
 
 
 
