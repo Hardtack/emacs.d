@@ -84,7 +84,7 @@ This is helpful for writeroom-mode, in particular."
   (setq universal-font-candidates ugly-universal-font-candidates)
   (geonu/update-fonts-from-global-candidates))
 (setq ugly-universal-font-candidates
-      '("D2Coding"))
+      '("D2Coding" "NanumGothicCoding"))
 (setq universal-font-candidates
       '())
 (setq roman-font-candidates
@@ -93,5 +93,6 @@ This is helpful for writeroom-mode, in particular."
       '("D2Coding" "NanumGothicCoding" "Apple SD Gothic Neo"))
 
 (geonu/update-fonts-from-global-candidates)
+(use-ugly-fixed-universal-font)
 
 (provide 'init-fonts)
