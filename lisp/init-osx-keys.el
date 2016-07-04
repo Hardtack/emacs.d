@@ -44,6 +44,9 @@ If point was already at that position, move point to beginning of line."
   (global-set-key (kbd "s-z") 'undo-tree-undo)
   (global-set-key (kbd "s-Z") 'undo-tree-redo)
 
+  ;; Comment
+  (global-set-key (kbd "s-/") 'comment-or-uncomment-line-or-region)
+
   ;; Resizing
   (global-set-key (kbd "<s-up>") 'beginning-of-buffer)
   (global-set-key (kbd "<s-down>") 'end-of-buffer)

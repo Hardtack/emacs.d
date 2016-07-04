@@ -1,4 +1,6 @@
 (require-package 'unfill)
+(require-package 'dash)
+(require 'dash)
 
 (when (fboundp 'electric-pair-mode)
   (electric-pair-mode))
@@ -269,6 +271,26 @@ With arg N, insert N newlines."
 (require 'guide-key-tip)
 (setq guide-key/guide-key-sequence '("C-x" "C-c" "C-x 4" "C-x 5" "C-c ;" "C-c ; f" "C-c ' f" "C-x n" "C-x C-r" "C-x r"))
 (setq guide-key-tip/enabled t)
+
+;;; Comment
+(defun line-beginning-position-at (line)
+  "Beginning position of specific LINE."
+  (let* ((current-line (line-number-at-pos))
+         (n (+ 1 (- line current-line))))
+    (line-beginning-position n)))
+(defun line-end-position-at (line)
+  "Beginning position of specific LINE."
+  (let* ((current-line (line-number-at-pos))
+         (n (+ 1 (- line current-line))))
+    (line-end-position n)))
+(defun comment-or-uncomment-line-or-region ()
+  "Comments or uncomments the current line or region."
+  (interactive)
+  (if (region-active-p)
+      (comment-or-uncomment-region (-> (region-beginning) line-number-at-pos line-beginning-position-at)
+                                   (-> (region-end) line-number-at-pos line-end-position-at))
+    (comment-or-uncomment-region (line-beginning-position) (line-end-position))))
+(global-set-key (kbd "C-/") 'comment-or-uncomment-line-or-region)
 
 
 ;;; Line number
