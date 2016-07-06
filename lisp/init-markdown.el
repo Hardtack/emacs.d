@@ -5,6 +5,21 @@
 (after-load 'whitespace-cleanup-mode
   (push 'markdown-mode whitespace-cleanup-mode-ignore-modes))
 
+;; I don't want these keys
+(let* ((map markdown-mode-map))
+  ;; List editing
+  (define-key map (kbd "M-<up>") nil)
+  (define-key map (kbd "M-<down>") nil)
+  (define-key map (kbd "M-<left>") nil)
+  (define-key map (kbd "M-<right>") nil)
+  (define-key map (kbd "M-<return>") nil)
+  (define-key map (kbd "C-c C-j") nil)
+  ;; Subtree editing
+  (define-key map (kbd "M-S-<up>") nil)
+  (define-key map (kbd "M-S-<down>") nil)
+  (define-key map (kbd "M-S-<left>") nil)
+  (define-key map (kbd "M-S-<right>") nil))
+
 ;; Set GFM as default
 (setq auto-mode-alist (cons '("\\.md$" . gfm-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.mdown$" . gfm-mode) auto-mode-alist))
