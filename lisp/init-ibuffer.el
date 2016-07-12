@@ -2,9 +2,11 @@
 ;;   See http://www.reddit.com/r/emacs/comments/21fjpn/fontifying_buffer_list_for_emacs_243/
 
 (require-package 'ibuffer-vc)
+(require-package 'ibuffer-projectile)
+(require 'ibuffer-projectile)
 
 (defun ibuffer-set-up-preferred-filters ()
-  (ibuffer-vc-set-filter-groups-by-vc-root)
+  (ibuffer-projectile-set-filter-groups)
   (unless (eq ibuffer-sorting-mode 'filename/process)
     (ibuffer-do-sort-by-filename/process)))
 
