@@ -27,4 +27,9 @@
 
 (defalias 'my-speedbar-toggle 'projectile-speedbar-toggle)
 
+;; Bottom-up VCS
+(setq projectile-project-root-files-bottom-up (append projectile-project-root-files
+                                                      projectile-project-root-files-bottom-up))
+(setq projectile-project-root-files '())
+
 (provide 'init-project)
