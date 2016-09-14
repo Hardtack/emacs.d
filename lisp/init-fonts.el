@@ -1,16 +1,9 @@
-;;; Character sets
+;;; init-fonts --- Customizations for fonts
+;;; Commentary:
+;;; Code:
+
+;; Character sets
 (require 'dash)
-
-(defcustom sanityinc/force-default-font-for-symbols nil
-  "When non-nil, force Emacs to use your default font for symbols."
-  :type 'boolean)
-
-(defun sanityinc/maybe-use-default-font-for-symbols ()
-  "Force Emacs to render symbols using the default font, if so configured."
-  (when sanityinc/force-default-font-for-symbols
-    (set-fontset-font "fontset-default" 'symbol (face-attribute 'default :family))))
-
-(add-hook 'after-init-hook 'sanityinc/maybe-use-default-font-for-symbols)
 
 
 ;;; Changing font sizes
@@ -19,17 +12,6 @@
 (global-set-key (kbd "C-M--") 'default-text-scale-decrease)
 (set-face-attribute 'default nil :height 140)
 
-
-(defun sanityinc/maybe-adjust-visual-fill-column ()
-  "Readjust visual fill column when the global font size is modified.
-This is helpful for writeroom-mode, in particular."
-  (if visual-fill-column-mode
-      (add-hook 'after-setting-font-hook 'visual-fill-column--adjust-window nil t)
-    (remove-hook 'after-setting-font-hook 'visual-fill-column--adjust-window t)))
-
-(add-hook 'visual-fill-column-mode-hook
-          'sanityinc/maybe-adjust-visual-fill-column)
-
 (defcustom universal-font nil
   "Font for universal characters.")
 (defcustom roman-font nil
@@ -37,7 +19,7 @@ This is helpful for writeroom-mode, in particular."
 (defcustom korean-font nil
   "Font for korean characters.")
 (defcustom universal-font-candidates '()
-  "Font candidates for universal-characters")
+  "Font candidates for universal-characters.")
 (defcustom roman-font-candidates '()
   "Font candidates for roman chracters.")
 (defcustom korean-font-candidates '()
@@ -96,3 +78,4 @@ This is helpful for writeroom-mode, in particular."
 (when window-system (use-ugly-fixed-universal-font))
 
 (provide 'init-fonts)
+;;; init-fonts ends here

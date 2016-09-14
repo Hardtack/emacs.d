@@ -7,12 +7,10 @@
 
 (after-load 'magit
   (define-key magit-status-mode-map (kbd "C-M-<up>") 'magit-section-up)
-  (add-hook 'magit-popup-mode-hook 'sanityinc/no-trailing-whitespace))
-
-
-;;; git-flow support
-(require 'magit-gitflow)
-(add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
+  (add-hook 'magit-popup-mode-hook 'sanityinc/no-trailing-whitespace)
+  ;; git-flow support
+  (require 'magit-gitflow)
+  (add-hook 'magit-mode-hook 'turn-on-magit-gitflow))
 
 
 (provide 'init-git)

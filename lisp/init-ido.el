@@ -1,3 +1,6 @@
+;;; init-ido --- Settings for ido
+;;; Commentary:
+;;; Code:
 ;; Use C-f during file selection to switch to regular find-file
 (ido-mode t)
 (ido-everywhere t)
@@ -22,3 +25,4 @@
 
 
 (provide 'init-ido)
+;;; init-ido ends here

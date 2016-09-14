@@ -1,3 +1,6 @@
+;;; init-python-mode --- Customizations for python-mode
+;;; Commentary:
+;;; Code:
 (setq auto-mode-alist
       (append '(("SConstruct\\'" . python-mode)
 		("SConscript\\'" . python-mode))
@@ -13,8 +16,9 @@
 
 ;;; Virtualenv setup
 (require 'virtualenvwrapper)
-(venv-initialize-interactive-shells)
-(venv-initialize-eshell)
+(after-load 'eshell
+  (venv-initialize-interactive-shells)
+  (venv-initialize-eshell))
 
 ;; Project specific virtualenv
 (add-hook 'python-mode-hook (lambda ()
@@ -33,7 +37,7 @@
 
 ;; Utility
 (defun venv-executable-find (exec)
-  "Get current path for exec based on venv."
+  "Get current path for EXEC based on venv."
   (interactive)
   (let ((path (if venv-current-dir
                   (concat (file-name-as-directory venv-current-dir)
@@ -45,10 +49,10 @@
       (executable-find exec))))
 
 ;; Install useful packages
-(defcustom useful-python-packages '("flake8" "pylint" "jedi" "epc") "Useful python packages")
+(defcustom useful-python-packages '("flake8" "pylint" "jedi" "epc") "Useful python packages.")
 
 (defun venv-install-packages (first &rest rest)
-  "Install package to venv."
+  "Install packages FIRST and REST to venv."
   (when (not (venv-executable-find "pip"))
     (error "pip not found."))
   (let ((command (append (list (venv-executable-find "pip")
@@ -61,7 +65,7 @@
   (display-buffer "*pip installation*"))
 
 (defun venv-install-requirements (path)
-  "Install package in requirements.txt"
+  "Install package in PATH of requirements.txt."
   (interactive (list (read-file-name "Path for requirement.txt: ")))
   (venv-install-packages "-r" path))
 
@@ -169,3 +173,4 @@
 
 
 (provide 'init-python-mode)
+;;; init-python-mode ends here

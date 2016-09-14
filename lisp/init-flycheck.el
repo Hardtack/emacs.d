@@ -1,3 +1,6 @@
+;;; init-flycheck --- Customizations for flycheck
+;;; Commentary:
+;;; Code:
 (add-hook 'after-init-hook 'global-flycheck-mode)
 
 ;; Override default flycheck triggers
@@ -9,3 +12,4 @@
 
 
 (provide 'init-flycheck)
+;;; init-flycheck ends here

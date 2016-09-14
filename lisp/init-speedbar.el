@@ -1,3 +1,6 @@
+;;; init-speedbar --- Customizations for speedbar
+;;; Commentary:
+;;; Code:
 (require 'sr-speedbar)
 
 ;; Configurations
@@ -22,8 +25,8 @@
 ;; Auto refresh
 (sr-speedbar-refresh-turn-off)
 ;; Disable expand all (takes too long)
-(defun speedbar-expand-line-descendants (&OPTIONAL ARG)
-  "Expand &OPTIONAL ARG." ())
+(defun speedbar-expand-line-descendants (&optional arg)
+  "Expand ARG." ())
 
 ;; Keys
 (unless (fboundp 'my-speedbar-toggle)
@@ -31,14 +34,16 @@
 (global-set-key (kbd "C-x p") 'my-speedbar-toggle)
 
 (defun speedbar-toggle-or-edit-line ()
+  "In speedbar, toggle line's expansion if line is directory, or edit it."
   (interactive)
   (let* ((file (speedbar-line-file)))
     (if (or (not file) (file-directory-p file))
         (speedbar-toggle-line-expansion)
       (speedbar-edit-line))))
 
-(defun geonu/add-speedbar-keys ()
-  (local-set-key (kbd "<return>") 'speedbar-toggle-or-edit-line))
-(add-hook 'speedbar-mode-hook 'geonu/add-speedbar-keys)
+(add-hook 'speedbar-mode-hook
+          (lambda ()
+            (local-set-key (kbd "<return>") 'speedbar-toggle-or-edit-line)))
 
 (provide 'init-speedbar)
+;;; init-speedbar ends here

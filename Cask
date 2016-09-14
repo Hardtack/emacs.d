@@ -123,3 +123,4 @@
 (depends-on "skewer-mode")
 (depends-on "flycheck-ledger")
 (depends-on "auto-compile")
+(depends-on "ruby-additional")

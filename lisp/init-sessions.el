@@ -1,15 +1,18 @@
+;;; init-sessions --- Settings for sessions
+;;; Commentary:
+;;; Code:
 ;; save a list of open files in ~/.emacs.d/.emacs.desktop
 (setq desktop-path (list user-emacs-directory)
       desktop-auto-save-timeout 600)
 (desktop-save-mode 1)
 
 (defadvice desktop-read (around time-restore activate)
-    (let ((start-time (current-time)))
-      (prog1
-          ad-do-it
-        (message "Desktop restored in %.2fms"
-                 (sanityinc/time-subtract-millis (current-time)
-                                                 start-time)))))
+  (let ((start-time (current-time)))
+    (prog1
+        ad-do-it
+      (message "Desktop restored in %.2fms"
+               (sanityinc/time-subtract-millis (current-time)
+                                               start-time)))))
 
 (defadvice desktop-create-buffer (around time-create activate)
   (let ((start-time (current-time))
@@ -63,11 +66,6 @@
                 tags-file-name
                 tags-table-list)))
 
-(when (eval-when-compile (and (>= emacs-major-version 24)
-                              (version< emacs-version "24.3.50")
-                              ))
-  (unless (boundp 'desktop-restore-frames)
-    (frame-restore)))
-
 
 (provide 'init-sessions)
+;;; init-sessions ends here

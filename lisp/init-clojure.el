@@ -1,3 +1,6 @@
+;;; init-clojure --- Customizations for clojure
+;;; Commentary:
+;;; Code:
 ;; See also init-clojure-cider.el
 (require 'clojure-mode)
 
@@ -7,3 +10,4 @@
 
 
 (provide 'init-clojure)
+;;; init-clojure ends here

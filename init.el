@@ -1,4 +1,4 @@
-;;; init --- init.el for emacs -*- lexical-binding: t; -*-
+;;; init --- init.el for emacs
 ;;; Commentary:
 ;;; This file bootstraps the configuration, which is divided into
 ;;; a number of other files.
@@ -7,6 +7,7 @@
 (require 'cask "/usr/local/share/emacs/site-lisp/cask/cask.el")
 (cask-initialize)
 
+(eval-when-compile (require 'cl))
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (setq-default flycheck-emacs-lisp-load-path load-path)
 (require 'init-benchmarking) ;; Measure startup time
@@ -17,41 +18,32 @@
 ;; Temporarily reduce garbage collection during startup
 ;;----------------------------------------------------------------------------
 (setq gc-cons-threshold (* 1024 1024))
-(let ((prev-gc-cons-threshold gc-cons-threshold))
+(lexical-let ((prev-gc-cons-threshold gc-cons-threshold))
   (setq gc-cons-threshold (* 1024 1024 1024))
   (add-hook 'after-init-hook
-	    (lambda () (setq gc-cons-threshold prev-gc-cons-threshold))))
+            (lambda () (setq gc-cons-threshold prev-gc-cons-threshold))))
 
 ;;----------------------------------------------------------------------------
 ;; Bootstrap config
 ;;----------------------------------------------------------------------------
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (require 'init-utils)
-(require 'init-site-lisp) ;; Must come before elpa, as it may provide package.el
-;; Calls (package-initialize)
-(require 'init-elpa)      ;; Machinery for installing required packages
+(require 'init-site-lisp)
 (require 'init-exec-path) ;; Set up $PATH
-
-;;----------------------------------------------------------------------------
-;; Allow users to provide an optional "init-preload-local.el"
-;;----------------------------------------------------------------------------
-(require 'init-preload-local nil t)
 
 ;;----------------------------------------------------------------------------
 ;; Load configs for specific features and modes
 ;;----------------------------------------------------------------------------
 
 (require 'init-appearance)
-(require 'init-frame-hooks)
-(require 'init-xterm)
 (require 'init-themes)
 (require 'init-osx-keys)
 (require 'init-gui-frames)
 (require 'init-dired)
 (require 'init-isearch)
+(require 'init-ibuffer)
 (require 'init-grep)
 (require 'init-uniquify)
-(require 'init-ibuffer)
 (require 'init-flycheck)
 
 (require 'init-recentf)
@@ -84,7 +76,6 @@
 (require 'init-css)
 (require 'init-python-mode)
 (require 'init-ruby-mode)
-(require 'init-rails)
 (require 'init-sql)
 (require 'init-clojure)
 (require 'init-clojure-cider)

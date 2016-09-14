@@ -1,3 +1,6 @@
+;;; init-auto-complete --- Customizations for auto-complete
+;;; Commentary:
+;;; Code:
 (require 'auto-complete-config)
 (global-auto-complete-mode t)
 (setq-default ac-expand-on-auto-complete nil)
@@ -19,12 +22,14 @@
 
 ;; hook AC into completion-at-point
 (defun sanityinc/auto-complete-at-point ()
+  "Do auto complete at point."
   (when (and (not (minibufferp))
 	     (fboundp 'auto-complete-mode)
 	     auto-complete-mode)
     #'auto-complete))
 
 (defun sanityinc/never-indent ()
+  "Disable indenting."
   (set (make-local-variable 'indent-line-function) (lambda () 'noindent)))
 
 (defun set-auto-complete-as-completion-at-point-function ()
@@ -43,21 +48,19 @@
 		ac-source-words-in-all-buffer))
 
 (dolist (mode '(log-edit-mode org-mode text-mode haml-mode
-                git-commit-mode
-                sass-mode yaml-mode csv-mode espresso-mode haskell-mode
-                html-mode nxml-mode sh-mode smarty-mode clojure-mode
-                lisp-mode textile-mode markdown-mode tuareg-mode
-                js3-mode css-mode less-css-mode sql-mode
-                sql-interactive-mode
-                inferior-emacs-lisp-mode))
+                              git-commit-mode
+                              sass-mode yaml-mode csv-mode espresso-mode haskell-mode
+                              html-mode nxml-mode sh-mode smarty-mode clojure-mode
+                              lisp-mode textile-mode markdown-mode tuareg-mode
+                              js3-mode css-mode less-css-mode sql-mode
+                              sql-interactive-mode
+                              inferior-emacs-lisp-mode))
   (add-to-list 'ac-modes mode))
 
-
 ;; Exclude very large buffers from dabbrev
-(defun sanityinc/dabbrev-friend-buffer (other-buffer)
-  (< (buffer-size other-buffer) (* 1 1024 1024)))
-
-(setq dabbrev-friend-buffer-function 'sanityinc/dabbrev-friend-buffer)
+(setq dabbrev-friend-buffer-function
+      (lambda (other-buffer) (< (buffer-size other-buffer) (* 1 1024 1024))))
 
 
 (provide 'init-auto-complete)
+;;; init-auto-complete ends here

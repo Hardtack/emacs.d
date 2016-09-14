@@ -1,3 +1,7 @@
+;;; init-project --- Settings for projectile
+;;; Commentary:
+;;; Code:
+
 (require 'projectile)
 
 (projectile-global-mode t)
@@ -7,6 +11,7 @@
 (require 'projectile-speedbar)
 
 (defun open-speedbar-for-current-buffer ()
+  "Open speedbar and show current buffer in tree."
   (interactive)
   (unless (condition-case nil
               (projectile-speedbar-open-current-buffer-in-tree)
@@ -15,6 +20,7 @@
 
 ;; Redef
 (defun projectile-speedbar-toggle ()
+  "Redefinition of projectile-speedbar-toggle."
   (interactive)
   (if (sr-speedbar-exist-p)
       (sr-speedbar-close)
@@ -30,3 +36,4 @@
 (setq projectile-project-root-files '())
 
 (provide 'init-project)
+;;; init-project ends here

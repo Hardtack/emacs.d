@@ -1,3 +1,7 @@
+;;; init-dired --- Settings for dired
+;;; Commentary:
+;;; Provides settings for dired, such as dired+
+;;; Code:
 (setq-default diredp-hide-details-initially-flag nil
               dired-dwim-target t)
 
@@ -8,14 +12,12 @@
 (after-load 'dired
   (require 'dired+)
   (require 'dired-sort)
-  (when (fboundp 'global-dired-hide-details-mode)
-    (global-dired-hide-details-mode -1))
   (setq dired-recursive-deletes 'top)
   (define-key dired-mode-map [mouse-2] 'dired-find-file)
   (add-hook 'dired-mode-hook
-            (lambda () (guide-key/add-local-guide-key-sequence "%"))))
+            (lambda () (guide-key/add-local-guide-key-sequence "%")))
 
-(after-load 'dired
   (add-hook 'dired-mode-hook 'diff-hl-dired-mode))
 
 (provide 'init-dired)
+;;; init-dired ends here

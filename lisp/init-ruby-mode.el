@@ -1,3 +1,7 @@
+;;; init-ruby-mode --- Cusomizations for ruby
+;;; Commentary:
+;;; Code:
+
 ;;; Basic ruby setup
 (add-auto-mode 'ruby-mode
                "Rakefile\\'" "\\.rake\\'" "\\.rxml\\'"
@@ -24,11 +28,15 @@
 
 (after-load 'page-break-lines
   (push 'ruby-mode page-break-lines-modes))
+
+;;; Latest ruby support
+(after-load 'ruby-mode
+  (require 'ruby-additional))
 
 
 ;;; Use RVM
-(require 'rvm)
-(when (rvm-working-p)
+(after-load 'ruby-mode
+  (require 'rvm)
   (rvm-use-default))
 
 
@@ -64,9 +72,9 @@
 
 
 ;;; Robe
-(require 'robe)
-(require 'ac-robe)
 (after-load 'ruby-mode
+  (require 'robe)
+  (require 'ac-robe)
   (add-hook 'ruby-mode-hook 'robe-mode))
 
 (defun sanityinc/maybe-enable-robe-ac ()
@@ -82,18 +90,12 @@
 
 
 
-;; Cutom keys
-(defun geonu/add-ruby-keys ()
-  "Add custom keys for ruby-mode")
-(add-hook 'ruby-mode-hook 'geonu/add-ruby-keys)
-
-
 ;; Customise highlight-symbol to not highlight do/end/class/def etc.
-(defun sanityinc/suppress-ruby-mode-keyword-highlights ()
-  "Suppress highlight-symbol for do/end etc."
-  (set (make-local-variable 'highlight-symbol-ignore-list)
-       (list (concat "\\_<" (regexp-opt '("do" "end")) "\\_>"))))
-(add-hook 'ruby-mode-hook 'sanityinc/suppress-ruby-mode-keyword-highlights)
+;; (defun sanityinc/suppress-ruby-mode-keyword-highlights ()
+;;   "Suppress highlight-symbol for do/end etc."
+;;   (set (make-local-variable 'highlight-symbol-ignore-list)
+;;        (list (concat "\\_<" (regexp-opt '("do" "end")) "\\_>"))))
+;; (add-hook 'ruby-mode-hook 'sanityinc/suppress-ruby-mode-keyword-highlights)
 
 
 
@@ -111,16 +113,19 @@
 (with-eval-after-load 'flycheck
   (flycheck-add-mode 'eruby-erubis 'web-mode)
   (add-to-list 'flycheck-disabled-checkers 'eruby-erubis))
-(defun geonu/is-web-erb-filename (filename)
+(defun geonu/web-erb-filename-p (filename)
+  "Is FILENAME erb filename?"
   (and (stringp filename)
        (or (string-match "\\.erb\\'" filename)
            (string-match "\\.rhtml\\'" filename)
            (string-match "\\.ejs\\'" filename))))
 (defun geonu/enable-erb-flycheck-in-web-mode ()
-  (when (geonu/is-web-erb-filename (buffer-file-name))
+  "Enable erb checker for erb filenames."
+  (when (geonu/web-erb-filename-p (buffer-file-name))
     (setq-local flycheck-disabled-checkers (delete 'eruby-erubies flycheck-disabled-checkers))))
 
 (add-hook 'web-mode-hook 'geonu/enable-erb-flycheck-in-web-mode)
 
 
 (provide 'init-ruby-mode)
+;;; init-ruby-mode ends here

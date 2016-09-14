@@ -1,3 +1,6 @@
+;;; init-clojure-cider --- Customizations for cider
+;;; Commentary:
+;;; Code:
 (require 'init-clojure)
 
 (setq nrepl-popup-stacktraces nil)
@@ -25,3 +28,4 @@
 
 
 (provide 'init-clojure-cider)
+;;; init-clojure-cider ends here

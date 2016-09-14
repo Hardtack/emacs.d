@@ -30,6 +30,12 @@ If point was already at that position, move point to beginning of line."
   ;; Close
   (global-set-key (kbd "s-w") 'kill-this-buffer)
 
+  ;; Window
+  (global-set-key (kbd "C-s-<left>")  'windmove-left)
+  (global-set-key (kbd "C-s-<right>") 'windmove-right)
+  (global-set-key (kbd "C-s-<up>")    'windmove-up)
+  (global-set-key (kbd "C-s-<down>")  'windmove-down)
+
   (setq default-input-method "MacOSX")
 
   ;; Make mouse wheel / trackpad scrolling less jerky

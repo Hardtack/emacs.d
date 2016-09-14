@@ -1,3 +1,6 @@
+;;; init-snippet --- Settings for yasnippet
+;;; Commentary:
+;;; Code:
 (require 'yasnippet)
 (require 'auto-complete)
 (require 'init-auto-complete)
@@ -36,3 +39,4 @@
 (define-key yas-minor-mode-map (kbd "<tab>") nil)
 
 (provide 'init-snippet)
+;;; init-snippet ends here

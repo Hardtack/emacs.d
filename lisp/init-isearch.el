@@ -1,3 +1,8 @@
+;;; init-isearch --- Customizations for isearch
+;;; Commentary:
+;;; Provides isearch customizations
+;;; Code:
+
 ;; Show number of matches while searching
 (global-anzu-mode t)
 (diminish 'anzu-mode)
@@ -71,3 +76,4 @@ This is useful when followed by an immediate kill."
 
 
 (provide 'init-isearch)
+;;; init-isearch ends here
