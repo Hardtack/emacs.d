@@ -1,10 +1,14 @@
-
+;;; init --- init.el for emacs -*- lexical-binding: t; -*-
+;;; Commentary:
 ;;; This file bootstraps the configuration, which is divided into
 ;;; a number of other files.
+;;; Code:
+
 (require 'cask "/usr/local/share/emacs/site-lisp/cask/cask.el")
 (cask-initialize)
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+(setq-default flycheck-emacs-lisp-load-path load-path)
 (require 'init-benchmarking) ;; Measure startup time
 
 (defconst *is-a-mac* (eq system-type 'darwin))
@@ -13,12 +17,10 @@
 ;; Temporarily reduce garbage collection during startup
 ;;----------------------------------------------------------------------------
 (setq gc-cons-threshold (* 1024 1024))
-
-(defconst sanityinc/initial-gc-cons-threshold gc-cons-threshold
-  "Initial value of `gc-cons-threshold' at start-up time.")
-(setq gc-cons-threshold (* 1024 1024 1024))
-(add-hook 'after-init-hook
-          (lambda () (setq gc-cons-threshold sanityinc/initial-gc-cons-threshold)))
+(let ((prev-gc-cons-threshold gc-cons-threshold))
+  (setq gc-cons-threshold (* 1024 1024 1024))
+  (add-hook 'after-init-hook
+	    (lambda () (setq gc-cons-threshold prev-gc-cons-threshold))))
 
 ;;----------------------------------------------------------------------------
 ;; Bootstrap config
@@ -119,8 +121,8 @@
 
 
 (provide 'init)
-
-;; Local Variables:
-;; coding: utf-8
-;; no-byte-compile: t
-;; End:
+;;; Local Variables:
+;;; coding: utf-8
+;;; no-byte-compile: t
+;;; End:
+;;; init.el ends here
