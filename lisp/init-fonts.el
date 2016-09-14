@@ -47,7 +47,9 @@ This is helpful for writeroom-mode, in particular."
 
 (defun geonu/font-exists-p (font)
   "Check the existence of FONT in this machine."
-  (-> (x-list-fonts font) not not))
+  (if window-system
+      (-> (x-list-fonts font) not not)
+    nil))
 
 (defun geonu/select-first-existing-font (candidates)
   "Select first installed font from CANDIDATES."
@@ -93,6 +95,6 @@ This is helpful for writeroom-mode, in particular."
       '("D2Coding" "NanumGothicCoding" "Apple SD Gothic Neo"))
 
 (geonu/update-fonts-from-global-candidates)
-(use-ugly-fixed-universal-font)
+(when window-system (use-ugly-fixed-universal-font))
 
 (provide 'init-fonts)
