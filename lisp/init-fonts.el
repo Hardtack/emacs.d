@@ -1,5 +1,4 @@
 ;;; Character sets
-(require-package 'dash)
 (require 'dash)
 
 (defcustom sanityinc/force-default-font-for-symbols nil
@@ -16,7 +15,6 @@
 
 ;;; Changing font sizes
 
-(require-package 'default-text-scale)
 (global-set-key (kbd "C-M-=") 'default-text-scale-increase)
 (global-set-key (kbd "C-M--") 'default-text-scale-decrease)
 (set-face-attribute 'default nil :height 140)

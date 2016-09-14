@@ -1,5 +1,3 @@
-(require-package 'dracula-theme)
-
 ;; If you don't customize it, this is the theme you get.
 (setq-default custom-enabled-themes '(dracula))
 

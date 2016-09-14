@@ -1,4 +1,3 @@
-(require-package 'yasnippet)
 (require 'yasnippet)
 (require 'auto-complete)
 (require 'init-auto-complete)

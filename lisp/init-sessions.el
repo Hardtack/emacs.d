@@ -28,8 +28,6 @@
 (setq-default history-length 1000)
 (savehist-mode t)
 
-(require-package 'session)
-
 (setq session-save-file (expand-file-name ".session" user-emacs-directory))
 (setq session-name-disable-regexp "\\(?:\\`'/tmp\\|\\.git/[A-Z_]+\\'\\)")
 (add-hook 'after-init-hook 'session-initialize)
@@ -69,7 +67,6 @@
                               (version< emacs-version "24.3.50")
                               ))
   (unless (boundp 'desktop-restore-frames)
-    (require-package 'frame-restore)
     (frame-restore)))
 
 

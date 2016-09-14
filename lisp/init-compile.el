@@ -1,7 +1,5 @@
 (setq-default compilation-scroll-output t)
 
-(require-package 'alert)
-
 ;; Customize `alert-default-style' to get messages after compilation
 
 (defun sanityinc/alert-after-compilation-finish (buf result)

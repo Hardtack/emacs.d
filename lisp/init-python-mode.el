@@ -3,11 +3,7 @@
 		("SConscript\\'" . python-mode))
               auto-mode-alist))
 
-(require-package 'pip-requirements)
-
-
 ;;; 79 columns
-(require-package 'fill-column-indicator)
 (require 'fill-column-indicator)
 
 (defun python-fci-hook ()
@@ -16,8 +12,6 @@
 (add-hook 'python-mode-hook 'python-fci-hook)
 
 ;;; Virtualenv setup
-(require-package 'virtualenvwrapper)
-
 (require 'virtualenvwrapper)
 (venv-initialize-interactive-shells)
 (venv-initialize-eshell)
@@ -106,7 +100,6 @@
           #'set-flychecker-executables 'local)
 
 ;;; Jedi
-(require-package 'jedi)
 (setq jedi:setup-keys t)
 (setq jedi:complete-on-dot t)
 

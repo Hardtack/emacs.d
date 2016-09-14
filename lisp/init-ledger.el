@@ -1,11 +1,8 @@
-(require-package 'ledger-mode)
-
 (add-to-list 'auto-mode-alist '("\\.ledger$" . ledger-mode))
 
-(when (maybe-require-package 'flycheck-ledger)
-  (after-load 'flycheck
-    (after-load 'ledger-mode
-      (require 'flycheck-ledger))))
+(after-load 'flycheck
+  (after-load 'ledger-mode
+    (require 'flycheck-ledger)))
 
 (after-load 'ledger-mode
   (define-key ledger-mode-map (kbd "RET") 'newline)

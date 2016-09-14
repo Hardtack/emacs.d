@@ -1,5 +1,3 @@
-(require-package 'unfill)
-(require-package 'dash)
 (require 'dash)
 
 (when (fboundp 'electric-pair-mode)
@@ -61,12 +59,10 @@
   (global-prettify-symbols-mode))
 
 
-(require-package 'undo-tree)
 (global-undo-tree-mode)
 (diminish 'undo-tree-mode)
 
 
-(require-package 'highlight-symbol)
 (dolist (hook '(prog-mode-hook html-mode-hook css-mode-hook))
   (add-hook hook 'highlight-symbol-mode)
   (add-hook hook 'highlight-symbol-nav-mode))
@@ -118,11 +114,9 @@
 (global-set-key (kbd "C-.") 'set-mark-command)
 (global-set-key (kbd "C-x C-.") 'pop-global-mark)
 
-(when (maybe-require-package 'avy)
-  (autoload 'avy-goto-word-or-subword-1 "avy")
-  (global-set-key (kbd "C-;") 'avy-goto-word-or-subword-1))
+(autoload 'avy-goto-word-or-subword-1 "avy")
+(global-set-key (kbd "C-;") 'avy-goto-word-or-subword-1)
 
-(require-package 'multiple-cursors)
 ;; multiple-cursors
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
@@ -156,14 +150,12 @@
 ;;----------------------------------------------------------------------------
 ;; Page break lines
 ;;----------------------------------------------------------------------------
-(require-package 'page-break-lines)
 (global-page-break-lines-mode)
 (diminish 'page-break-lines-mode)
 
 ;;----------------------------------------------------------------------------
 ;; Shift lines up and down with M-S-up and M-S-down.
 ;;----------------------------------------------------------------------------
-(require-package 'move-dup)
 (global-set-key [M-S-up] 'md/move-lines-up)
 (global-set-key [M-S-down] 'md/move-lines-down)
 
@@ -188,7 +180,6 @@
 ;;----------------------------------------------------------------------------
 ;; Cut/copy the current line if no region is active
 ;;----------------------------------------------------------------------------
-(require-package 'whole-line-or-region)
 (whole-line-or-region-mode t)
 (diminish 'whole-line-or-region-mode)
 (make-variable-buffer-local 'whole-line-or-region-mode)
@@ -261,12 +252,9 @@ With arg N, insert N newlines."
 
 
 
-(require-package 'highlight-escape-sequences)
 (hes-mode)
 
 
-(require-package 'guide-key)
-(require-package 'guide-key-tip)
 (require 'guide-key)
 (require 'guide-key-tip)
 (setq guide-key/guide-key-sequence '("C-x" "C-c" "C-x 4" "C-x 5" "C-c ;" "C-c ; f" "C-c ' f" "C-x n" "C-x C-r" "C-x r"))
@@ -294,7 +282,6 @@ With arg N, insert N newlines."
 
 
 ;;; Line number
-(require-package 'linum)
 (global-linum-mode)
 (setq linum-format "%3d ")
 

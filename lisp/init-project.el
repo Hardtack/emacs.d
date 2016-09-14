@@ -1,11 +1,8 @@
-(require-package 'projectile)
 (require 'projectile)
 
 (projectile-global-mode t)
 
 ;; Speedbar setup
-(require-package 'projectile-speedbar)
-(require-package 'sr-speedbar)
 (require 'sr-speedbar)
 (require 'projectile-speedbar)
 

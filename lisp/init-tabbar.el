@@ -1,4 +1,3 @@
-(require-package 'tabbar)
 (require 'tabbar)
 
 (tabbar-mode)
@@ -7,7 +6,6 @@
 (global-set-key (kbd "C-x <left>") 'tabbar-backward-tab)
 (global-set-key (kbd "C-x <right>") 'tabbar-forward-tab)
 
-(require-package 'tabbar-ruler)
 (require 'tabbar-ruler)
 (setq tabbar-ruler-global-tabbar t)
 (setq tabbar-ruler-popup-menu t)
@@ -17,7 +15,6 @@
 (tabbar-ruler-group-by-projectile-project)
 
 ;; Tab navigation
-(require-package 'dash)
 (require 'dash)
 
 (defun geonu/select-tab-at (index &optional tabset)

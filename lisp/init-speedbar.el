@@ -1,5 +1,3 @@
-(require-package 'speedbar)
-(require-package 'sr-speedbar)
 (require 'sr-speedbar)
 
 ;; Configurations

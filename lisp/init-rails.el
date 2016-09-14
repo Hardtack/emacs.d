@@ -1,4 +1,3 @@
-(require-package 'rinari)
 (after-load 'rinari
   (diminish 'rinari-minor-mode "Rin"))
 (global-rinari-mode)

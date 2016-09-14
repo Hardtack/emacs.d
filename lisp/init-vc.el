@@ -1,4 +1,3 @@
-(require-package 'diff-hl)
 (require 'diff-hl)
 (require 'diff-hl-flydiff)
 

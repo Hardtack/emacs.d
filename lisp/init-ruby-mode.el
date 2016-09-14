@@ -1,7 +1,4 @@
 ;;; Basic ruby setup
-(require-package 'ruby-mode)
-(require-package 'ruby-hash-syntax)
-
 (add-auto-mode 'ruby-mode
                "Rakefile\\'" "\\.rake\\'" "\\.rxml\\'"
                "\\.rjs\\'" "\\.irbrc\\'" "\\.pryrc\\'" "\\.builder\\'" "\\.ru\\'"
@@ -30,7 +27,6 @@
 
 
 ;;; Use RVM
-(require-package 'rvm)
 (require 'rvm)
 (when (rvm-working-p)
   (rvm-use-default))
@@ -38,7 +34,6 @@
 
 
 ;;; 80 columns
-(require-package 'fill-column-indicator)
 (require 'fill-column-indicator)
 
 (defun ruby-fci-hook ()
@@ -49,8 +44,6 @@
 
 
 ;;; Inferior ruby
-(require-package 'inf-ruby)
-(require-package 'ac-inf-ruby)
 (after-load 'auto-complete
   (add-to-list 'ac-modes 'inf-ruby-mode))
 (add-hook 'inf-ruby-mode-hook 'ac-inf-ruby-enable)
@@ -60,8 +53,6 @@
 
 
 ;;; Ruby compilation
-(require-package 'ruby-compilation)
-
 (after-load 'ruby-mode
   (let ((m ruby-mode-map))
     (define-key m [S-f7] 'ruby-compilation-this-buffer)
@@ -73,7 +64,6 @@
 
 
 ;;; Robe
-(require-package 'robe)
 (require 'robe)
 (require 'ac-robe)
 (after-load 'ruby-mode
@@ -108,26 +98,10 @@
 
 
 ;;; ri support
-(require-package 'yari)
 (defalias 'ri 'yari)
 
 
-;;; byebug
-
-
-;;; bundle
-(require-package 'bundler)
-
-
-
-;;; YAML
-
-(maybe-require-package 'yaml-mode)
-
-
-
 ;;; ERB
-(require-package 'web-mode)
 (require 'web-mode)
 (setq erb-file-extensions '(".erb" ".rhtml" ".ejs"))
 (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
@@ -147,29 +121,6 @@
     (setq-local flycheck-disabled-checkers (delete 'eruby-erubies flycheck-disabled-checkers))))
 
 (add-hook 'web-mode-hook 'geonu/enable-erb-flycheck-in-web-mode)
-
-
-;;----------------------------------------------------------------------------
-;; Ruby - my convention for heredocs containing SQL
-;;----------------------------------------------------------------------------
-
-;; Needs to run after rinari to avoid clobbering font-lock-keywords?
-
-;; (require-package 'mmm-mode)
-;; (eval-after-load 'mmm-mode
-;;   '(progn
-;;      (mmm-add-classes
-;;       '((ruby-heredoc-sql
-;;          :submode sql-mode
-;;          :front "<<-?[\'\"]?\\(end_sql\\)[\'\"]?"
-;;          :save-matches 1
-;;          :front-offset (end-of-line 1)
-;;          :back "^[ \t]*~1$"
-;;          :delimiter-mode nil)))
-;;      (mmm-add-mode-ext-class 'ruby-mode "\\.rb\\'" 'ruby-heredoc-sql)))
-
-;;(add-to-list 'mmm-set-file-name-for-modes 'ruby-mode)
-
 
 
 (provide 'init-ruby-mode)

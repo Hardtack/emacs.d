@@ -1,5 +1,4 @@
 ;; Fill column indicator
-(require-package 'fill-column-indicator)
 (defun sanityinc/prog-mode-fci-settings ()
   (turn-on-fci-mode)
   (when show-trailing-whitespace

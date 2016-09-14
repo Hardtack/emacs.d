@@ -1,5 +1,3 @@
-(require-package 'markdown-mode)
-
 (require 'markdown-mode)
 (require 'org)
 (after-load 'whitespace-cleanup-mode

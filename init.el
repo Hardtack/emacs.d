@@ -1,6 +1,8 @@
 
 ;;; This file bootstraps the configuration, which is divided into
 ;;; a number of other files.
+(require 'cask "/usr/local/share/emacs/site-lisp/cask/cask.el")
+(cask-initialize)
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (require 'init-benchmarking) ;; Measure startup time
@@ -37,12 +39,6 @@
 ;;----------------------------------------------------------------------------
 ;; Load configs for specific features and modes
 ;;----------------------------------------------------------------------------
-
-(require-package 'wgrep)
-(require-package 'project-local-variables)
-(require-package 'diminish)
-(require-package 'scratch)
-(require-package 'mwe-log-commands)
 
 (require 'init-appearance)
 (require 'init-frame-hooks)
@@ -96,12 +92,6 @@
 (require 'init-lisp)
 
 (require 'init-misc)
-;; Extra packages which don't require any configuration
-
-(require-package 'htmlize)
-(when *is-a-mac*
-  (require-package 'osx-location))
-(require-package 'regex-tool)
 
 ;;----------------------------------------------------------------------------
 ;; Allow access from emacsclient

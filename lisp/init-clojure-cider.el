@@ -1,8 +1,5 @@
 (require 'init-clojure)
 
-(require-package 'cider)
-(require-package 'ac-cider)
-
 (setq nrepl-popup-stacktraces nil)
 
 (after-load 'cider
@@ -22,7 +19,6 @@
   (add-hook 'cider-repl-mode-hook
             (lambda () (setq show-trailing-whitespace nil))))
 
-(require-package 'flycheck-clojure)
 (after-load 'clojure-mode
   (after-load 'flycheck
     (flycheck-clojure-setup)))
