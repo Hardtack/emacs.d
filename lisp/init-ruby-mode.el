@@ -90,19 +90,6 @@
 
 
 
-;; Customise highlight-symbol to not highlight do/end/class/def etc.
-;; (defun sanityinc/suppress-ruby-mode-keyword-highlights ()
-;;   "Suppress highlight-symbol for do/end etc."
-;;   (set (make-local-variable 'highlight-symbol-ignore-list)
-;;        (list (concat "\\_<" (regexp-opt '("do" "end")) "\\_>"))))
-;; (add-hook 'ruby-mode-hook 'sanityinc/suppress-ruby-mode-keyword-highlights)
-
-
-
-;;; ri support
-(defalias 'ri 'yari)
-
-
 ;;; ERB
 (require 'web-mode)
 (setq erb-file-extensions '(".erb" ".rhtml" ".ejs"))

@@ -1,9 +1,12 @@
+;;; init-lisp --- Customizations for Emacs Lisp
+;;; Commentary:
+;;; Code:
 (dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook))
   (add-hook hook 'turn-on-elisp-slime-nav-mode))
 (add-hook 'emacs-lisp-mode-hook (lambda () (setq mode-name "ELisp")))
 
 (setq-default initial-scratch-message
-              (concat ";; Happy hacking, " user-login-name " - Emacs ♥ you!\n\n"))
+              (concat ";; May clean-deploy be we you, " user-login-name))
 
 
 
@@ -179,6 +182,7 @@
 
 (add-to-list 'auto-mode-alist '("\\.emacs-project\\'" . emacs-lisp-mode))
 (add-to-list 'auto-mode-alist '("archive-contents\\'" . emacs-lisp-mode))
+(add-to-list 'auto-mode-alist '("Cask$" . emacs-lisp-mode))
 
 (after-load 'lisp-mode
   (cl-lib-highlight-initialize))
@@ -278,3 +282,4 @@
 
 
 (provide 'init-lisp)
+;;; init-lisp ends here

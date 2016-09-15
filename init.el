@@ -4,7 +4,13 @@
 ;;; a number of other files.
 ;;; Code:
 
-(require 'cask "/usr/local/share/emacs/site-lisp/cask/cask.el")
+(setq cask-candidates '("~/.cask/cask.el"
+			"/usr/local/share/emacs/site-lisp/cask/cask.el"))
+(if (file-exists-p "~/.cask/cask.el")
+  (require 'cask "~/.cask/cask.el")
+  (when (file-exists-p "/usr/local/share/emacs/site-lisp/cask/cask.el")
+    (require 'cask "/usr/local/share/emacs/site-lisp/cask/cask.el")))
+
 (cask-initialize)
 
 (eval-when-compile (require 'cl))
