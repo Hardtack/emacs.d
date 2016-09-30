@@ -29,6 +29,7 @@ If point was already at that position, move point to beginning of line."
 
   ;; Close
   (global-set-key (kbd "s-w") 'kill-this-buffer)
+  (global-unset-key (kbd "s-k"))
 
   ;; Window
   (global-set-key (kbd "C-s-<left>")  'windmove-left)
