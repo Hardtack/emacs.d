@@ -51,6 +51,7 @@
 (require 'init-grep)
 (require 'init-uniquify)
 (require 'init-flycheck)
+(require 'init-tagedit)
 
 (require 'init-recentf)
 (require 'init-ido)

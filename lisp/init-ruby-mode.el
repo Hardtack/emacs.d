@@ -113,6 +113,11 @@
 
 (add-hook 'web-mode-hook 'geonu/enable-erb-flycheck-in-web-mode)
 
+;; Enable tagedit
+(after-load 'web-mode
+  (require 'tagedit)
+  (add-hook 'web-mode-hook (lambda () (tagedit-mode 1))))
+
 
 (provide 'init-ruby-mode)
 ;;; init-ruby-mode ends here
