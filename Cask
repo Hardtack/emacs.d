@@ -86,11 +86,7 @@
 (depends-on "tagedit") ; Paredit-like HTML tag editing
 (depends-on "web-mode") ; Integrated web mode
 (depends-on "js-comint") ; inf-js
-(depends-on "js2-mode")
-(depends-on "ac-js2")
 (depends-on "coffee-mode")
-(depends-on "skewer-mode") ; Live browser support
-(depends-on "skewer-less")
 ;; Emacs Lisp dev
 (depends-on "elisp-slime-nav") ; Goto-definition
 (depends-on "lively")
