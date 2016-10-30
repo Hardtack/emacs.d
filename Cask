@@ -1,16 +1,17 @@
-(source gnu)
-(source org)
-(source melpa)
+(source "melpa" "http://melpa.org/packages/")
+(source "org" "http://orgmode.org/elpa/")
+(source "ELPA" "http://tromey.com/elpa/")
+(source "gnu" "http://elpa.gnu.org/packages/")
 
 ;; Essentials
 (depends-on "cask") ; Package manager
+(depends-on "cl-lib") ; Common-lisp like library
 ;; Common utilities
 (depends-on "project-local-variables") ; Project specific variables
 (depends-on "diminish") ; Minor mode without modeline display
 (depends-on "scratch") ; Mode specific scratch buffer
 (depends-on "dash") ; Modern functional programming for elisp
 (depends-on "exec-path-from-shell")
-(depends-on "cl-lib") ; Common-lisp like library
 ;; Editing utilities
 (depends-on "undo-tree") ; Enhanced undo-redo
 (depends-on "multiple-cursors") ; Multiple cursors

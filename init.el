@@ -4,6 +4,13 @@
 ;;; a number of other files.
 ;;; Code:
 
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (setq cask-candidates '("~/.cask/cask.el"
 			"/usr/local/share/emacs/site-lisp/cask/cask.el"))
 (if (file-exists-p "~/.cask/cask.el")

@@ -1,3 +1,6 @@
+;;; init-editing-utils --- Utilities for editing
+;;; Commentary:
+;;; Code:
 (require 'dash)
 
 (when (fboundp 'electric-pair-mode)
@@ -303,3 +306,4 @@ With arg N, insert N newlines."
 
 
 (provide 'init-editing-utils)
+;;; init-editing-utils ends here
