@@ -28,6 +28,41 @@
   (add-hook hook 'rainbow-delimiters-mode))
 
 
+
+
+;;; Setup eslint
+
+;; Disable jshint since we prefer eslint checking
+(setq-default flycheck-disabled-checkers
+              (append flycheck-disabled-checkers
+                      '(javascript-jshint)))
+;; use eslint with web-mode for jsx files
+(flycheck-add-mode 'javascript-eslint 'web-mode)
+
+;; disable json-jsonlist checking for json files
+(setq-default flycheck-disabled-checkers
+              (append flycheck-disabled-checkers
+                      '(json-jsonlist)))
+
+;; Use locally installed eslint if available
+(defun use-eslint-from-node-modules ()
+  "Use locally installed eslint if available."
+  (let* ((root (locate-dominating-file
+                (or (buffer-file-name) default-directory)
+                "node_modules"))
+         (eslint (and root
+                      (expand-file-name "node_modules/eslint/bin/eslint.js"
+                                        root))))
+    (when (and eslint (file-executable-p eslint))
+      (setq-local flycheck-javascript-eslint-executable eslint))))
+(add-hook 'flycheck-mode-hook #'use-eslint-from-node-modules)
+
+;; adjust indents for web-mode to 2 spaces
+(add-hook 'web-mode-hook
+          (lambda ()
+            (setq web-mode-markup-indent-offset 2)
+            (setq web-mode-css-indent-offset 2)
+            (setq web-mode-code-indent-offset 2)))
 
 ;;; Coffeescript
 
@@ -57,7 +92,7 @@
 
 (dolist (hook '(js-mode-hook))
   (add-hook hook 'inferior-js-keys-mode))
-
+
 ;;; Disable ac + yas on js-mode
 (defun disable-ac-yas ()
   "Disable yas in ac."
