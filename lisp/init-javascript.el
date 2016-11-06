@@ -58,5 +58,12 @@
 (dolist (hook '(js-mode-hook))
   (add-hook hook 'inferior-js-keys-mode))
 
+;;; Disable ac + yas on js-mode
+(defun disable-ac-yas ()
+  "Disable yas in ac."
+  (setq ac-sources (delete 'ac-source-yasnippet ac-sources)))
+(add-hook 'js-mode-hook 'disable-ac-yas)
+
+
 (provide 'init-javascript)
 ;;; init-javascript ends here
