@@ -23,6 +23,7 @@
 (depends-on "default-text-scale") ; Text scale
 (depends-on "aggressive-indent") ; Keep my code always indented
 ;; Convinience tools
+(depends-on "zoom-frm") ; Font per frame
 (depends-on "wgrep") ; Writable grep
 (depends-on "fill-column-indicator") ; Column line
 (depends-on "anzu") ; Show matching count for seracher

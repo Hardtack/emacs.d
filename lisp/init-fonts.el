@@ -8,8 +8,6 @@
 
 ;;; Changing font sizes
 
-(global-set-key (kbd "C-M-=") 'default-text-scale-increase)
-(global-set-key (kbd "C-M--") 'default-text-scale-decrease)
 (set-face-attribute 'default nil :height 140)
 
 (defcustom universal-font nil
@@ -36,7 +34,7 @@
   (-first #'geonu/font-exists-p candidates))
 
 (defun geonu/update-fonts ()
-  "Update fonts from customs"
+  "Update fonts from customs."
   (interactive)
   (if universal-font
       (progn (set-face-attribute 'default nil :family universal-font)
