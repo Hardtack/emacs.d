@@ -70,6 +70,7 @@
 (require 'init-mmm)
 (require 'init-project)
 (require 'init-speedbar)
+(require 'init-eshell)
 
 (require 'init-editing-utils)
 (require 'init-tabbar)
