@@ -48,6 +48,7 @@
 (depends-on "diff-hl") ; Hightlight diff
 (depends-on "switch-window") ; Window switching tool
 (depends-on "smex") ; Fuzzy ido
+(depends-on "emojify") ; Emoji
 ;; Git tools
 (depends-on "gitignore-mode")
 (depends-on "gitconfig-mode")

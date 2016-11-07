@@ -75,5 +75,10 @@
 (geonu/update-fonts-from-global-candidates)
 (when window-system (use-ugly-fixed-universal-font))
 
+;;; Emoji support
+(setq emojify-emoji-styles 'unicode)
+(require 'emojify)
+(add-hook 'after-init-hook #'global-emojify-mode)
+
 (provide 'init-fonts)
 ;;; init-fonts ends here
