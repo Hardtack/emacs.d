@@ -27,8 +27,6 @@
 (dolist (hook '(js-mode-hook json-mode-hook))
   (add-hook hook 'rainbow-delimiters-mode))
 
-
-
 
 ;;; Setup eslint
 
@@ -92,6 +90,12 @@
 
 (dolist (hook '(js-mode-hook))
   (add-hook hook 'inferior-js-keys-mode))
+
+
+;;; Use emacsclient as REACT_EDITOR
+(setenv "REACT_EDITOR" "emacsclient")
+
+
 
 ;;; Disable ac + yas on js-mode
 (defun disable-ac-yas ()
