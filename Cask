@@ -12,6 +12,8 @@
 (depends-on "scratch") ; Mode specific scratch buffer
 (depends-on "dash") ; Modern functional programming for elisp
 (depends-on "exec-path-from-shell")
+;; Tools inside emacs
+(depends-on "restclient")
 ;; Editing utilities
 (depends-on "undo-tree") ; Enhanced undo-redo
 (depends-on "multiple-cursors") ; Multiple cursors

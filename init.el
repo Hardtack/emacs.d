@@ -72,6 +72,8 @@
 (require 'init-speedbar)
 (require 'init-eshell)
 
+(require 'init-restclient)
+
 (require 'init-editing-utils)
 (require 'init-tabbar)
 (require 'init-whitespace)
@@ -124,7 +126,6 @@
           (lambda ()
             (message "init completed in %.2fms"
                      (sanityinc/time-subtract-millis after-init-time before-init-time))))
-
 
 (provide 'init)
 ;;; Local Variables:
