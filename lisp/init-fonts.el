@@ -76,7 +76,7 @@
 (when window-system (use-ugly-fixed-universal-font))
 
 ;;; Emoji support
-(setq emojify-emoji-styles 'unicode)
+(setq emojify-emoji-styles '(unicode))
 (require 'emojify)
 (add-hook 'after-init-hook #'global-emojify-mode)
 
