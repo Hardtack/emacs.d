@@ -71,6 +71,7 @@
 (depends-on "yasnippet")
 (depends-on "flycheck-package")
 (depends-on "whitespace-cleanup-mode")
+(depends-on "smartparens")
 ;; Clojure dev
 (depends-on "cider") ; Emacs dev tool
 (depends-on "ac-cider")
@@ -119,11 +120,11 @@
 (depends-on "ruby-hash-syntax")
 (depends-on "ac-inf-ruby")
 (depends-on "ruby-compilation")
-(depends-on "ruby-additional") ; Ruby supports that is not merged into Emacs yet
 (depends-on "rvm")
 (depends-on "inf-ruby")
 (depends-on "robe")
 (depends-on "bundler")
+(depends-on "rubocop")
 ;; SQL dev
 (depends-on "sql-indent")
 ;; JSON
