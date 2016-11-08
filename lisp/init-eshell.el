@@ -10,10 +10,12 @@
 ;; Customize functions by advicing
 (defun find-file-in-next-frame (filename &optional wildcards)
   "Run 'find-file with FILENAME and WILDCARDS in next frame."
-  (call-interactively 'other-frame)
   (if (listp filename)
-      (loop for f in filename do (find-file f wildcards))
-    (apply 'find-file filename wildcards)))
+      (loop for f in filename do (find-file-in-next-frame f wildcards))
+    (progn
+      (let* ((f (file-truename filename)))
+        (call-interactively 'other-frame)
+        (apply 'find-file f  wildcards)))))
 
 (provide 'init-eshell)
 ;;; init-eshell ends here
