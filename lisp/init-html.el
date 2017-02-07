@@ -2,15 +2,26 @@
 ;;; Commentary:
 ;;; Code:
 
-(add-hook 'html-mode-hook (lambda () (tidy-build-menu html-mode-map)))
+(add-hook 'web-mode-hook (lambda () (tidy-build-menu web-mode-map)))
 
-(after-load 'sgml-mode
+;; Enable tagedit
+(after-load 'web-mode
   (require 'tagedit)
-  (add-hook 'sgml-mode-hook (lambda () (tagedit-mode 1))))
+  (add-hook 'web-mode-hook (lambda () (tagedit-mode 1))))
 
-(add-auto-mode 'html-mode "\\.\\(jsp\\|tmpl\\)\\'")
+;; Set default indentations to 2
+(setq web-mode-markup-indent-offset 2)
+(setq web-mode-css-indent-offset 2)
+(setq web-mode-code-indent-offset 2)
 
-;; Note: ERB is configured in init-ruby-mode
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+;; ERB is configured in init-ruby.el
 
 (provide 'init-html)
 ;;; init-html ends here
