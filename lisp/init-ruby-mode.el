@@ -84,31 +84,14 @@
 
 ;;; ERB
 (require 'web-mode)
+(define-derived-mode erb-web-mode web-mode "ERB Web" "Major mode for edting web templates with ERB.")
 (setq erb-file-extensions '(".erb" ".rhtml" ".ejs"))
-(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.rhtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.ejs\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . erb-web-mode))
+(add-to-list 'auto-mode-alist '("\\.rhtml\\'" . erb-web-mode))
+(add-to-list 'auto-mode-alist '("\\.ejs\\'" . erb-web-mode))
 
-(with-eval-after-load 'flycheck
-  (flycheck-add-mode 'eruby-erubis 'web-mode)
-  (add-to-list 'flycheck-disabled-checkers 'eruby-erubis))
-(defun geonu/web-erb-filename-p (filename)
-  "Is FILENAME erb filename?"
-  (and (stringp filename)
-       (or (string-match "\\.erb\\'" filename)
-           (string-match "\\.rhtml\\'" filename)
-           (string-match "\\.ejs\\'" filename))))
-(defun geonu/enable-erb-flycheck-in-web-mode ()
-  "Enable erb checker for erb filenames."
-  (when (geonu/web-erb-filename-p (buffer-file-name))
-    (setq-local flycheck-disabled-checkers (delete 'eruby-erubies flycheck-disabled-checkers))))
-
-(add-hook 'web-mode-hook 'geonu/enable-erb-flycheck-in-web-mode)
-
-;; Enable tagedit
-(after-load 'web-mode
-  (require 'tagedit)
-  (add-hook 'web-mode-hook (lambda () (tagedit-mode 1))))
+(after-load 'flycheck
+  (flycheck-add-mode 'eruby-erubis 'erb-web-mode))
 
 
 (provide 'init-ruby-mode)
