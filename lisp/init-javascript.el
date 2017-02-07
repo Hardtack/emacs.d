@@ -28,6 +28,10 @@
   (add-hook hook 'rainbow-delimiters-mode))
 
 
+;; Customize js-mode setup
+(setq-default js-switch-indent-offset 2)
+
+
 ;;; Setup eslint
 
 ;; Disable jshint since we prefer eslint checking
@@ -43,15 +47,17 @@
                       '(json-jsonlist)))
 
 ;; Use locally installed eslint if available
+(defun -find-local-eslint ()
+  "Find locally installed eslint."
+  (let* ((eslint (locate-dominating-file
+                  (or (buffer-file-name) default-directory)
+                  "node_modules/.bin/eslint")))
+    (if (and eslint (file-executable-p eslint))
+        (expand-file-name "node_modules/.bin/eslint" eslint) nil)))
 (defun use-eslint-from-node-modules ()
   "Use locally installed eslint if available."
-  (let* ((root (locate-dominating-file
-                (or (buffer-file-name) default-directory)
-                "node_modules"))
-         (eslint (and root
-                      (expand-file-name "node_modules/eslint/bin/eslint.js"
-                                        root))))
-    (when (and eslint (file-executable-p eslint))
+  (let* ((eslint (-find-local-eslint)))
+    (when eslint
       (setq-local flycheck-javascript-eslint-executable eslint))))
 (add-hook 'flycheck-mode-hook #'use-eslint-from-node-modules)
 
@@ -90,6 +96,11 @@
 
 (dolist (hook '(js-mode-hook))
   (add-hook hook 'inferior-js-keys-mode))
+
+
+;;; Flow
+(load-file (expand-file-name "site-lisp/flow-for-emacs/flow.el" user-emacs-directory))
+(require 'flow)
 
 
 ;;; Use emacsclient as REACT_EDITOR

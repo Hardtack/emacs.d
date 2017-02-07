@@ -1,3 +1,7 @@
+;;; init-git --- Git configurations
+;;; Commentary:
+;;; Code:
+
 ;; TODO: link commits from vc-log to magit-show-commit
 ;; TODO: smerge-mode
 (setq-default
@@ -14,3 +18,4 @@
 
 
 (provide 'init-git)
+;;; init-git ends here

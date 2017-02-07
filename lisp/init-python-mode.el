@@ -46,7 +46,7 @@
                 (executable-find exec))))
     (if (and path (file-exists-p path))
         path
-      (executable-find exec))))
+      nil)))
 
 ;; Install useful packages
 (defcustom useful-python-packages '("flake8" "pylint" "jedi" "epc") "Useful python packages.")
@@ -170,6 +170,10 @@
 ;;;(assq-delete-all 'rst-python-docstrings mmm-classes-alist)
 
 (mmm-add-mode-ext-class 'python-mode nil 'rst-python-docstrings)
+
+
+;;; Disable prettify-symbol-mode
+(add-hook 'python-mode-hook (lambda () (prettify-symbols-mode 0)))
 
 
 (provide 'init-python-mode)

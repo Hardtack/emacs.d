@@ -60,7 +60,7 @@
   "Use ugly fixed-size universal font."
   (interactive)
   (when (not (geonu/select-first-existing-font ugly-universal-font-candidates))
-    (error "No fixed-sized universal fonts available."))
+    (error "No fixed-sized universal fonts available"))
   (setq universal-font-candidates ugly-universal-font-candidates)
   (geonu/update-fonts-from-global-candidates))
 (setq ugly-universal-font-candidates
@@ -74,6 +74,7 @@
 
 (geonu/update-fonts-from-global-candidates)
 (when window-system (use-ugly-fixed-universal-font))
+
 
 ;;; Emoji support
 (setq emojify-emoji-styles '(unicode))

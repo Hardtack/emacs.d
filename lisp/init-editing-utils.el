@@ -252,7 +252,18 @@ With arg N, insert N newlines."
 
 (global-set-key (kbd "C-o") 'end-of-line-and-new-line)
 (global-set-key (kbd "M-o") 'beginning-of-line-and-new-line)
-
+
+;;; Eval and replace
+(defun eval-and-replace ()
+  "Replace the preceding sexp with its value."
+  (interactive)
+  (backward-kill-sexp)
+  (condition-case nil
+      (prin1 (eval (read (current-kill 0)))
+             (current-buffer))
+    (error (message "Invalid expression")
+           (insert (current-kill 0)))))
+(global-set-key (kbd "C-c e") 'eval-and-replace)
 
 
 

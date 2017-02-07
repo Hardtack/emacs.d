@@ -90,8 +90,9 @@
 (depends-on "tidy")
 (depends-on "tagedit") ; Paredit-like HTML tag editing
 (depends-on "web-mode") ; Integrated web mode
-(depends-on "js-comint") ; inf-js
 (depends-on "coffee-mode")
+;; Javascript
+(depends-on "js-comint") ; inf-js
 ;; Emacs Lisp dev
 (depends-on "elisp-slime-nav") ; Goto-definition
 (depends-on "lively")
@@ -125,8 +126,13 @@
 (depends-on "robe")
 (depends-on "bundler")
 (depends-on "rubocop")
+(depends-on "rake") ; Rake support
 ;; SQL dev
 (depends-on "sql-indent")
+;; Haskell dev
+(depends-on "haskell-mode")
+(depends-on "hindent")
+(depends-on "hayoo")
 ;; JSON
 (depends-on "json-mode")
 ;; YAML

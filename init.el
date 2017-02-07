@@ -96,6 +96,7 @@
 (require 'init-sql)
 (require 'init-clojure)
 (require 'init-clojure-cider)
+(require 'init-haskell)
 
 (require 'init-paredit)
 (require 'init-lisp)

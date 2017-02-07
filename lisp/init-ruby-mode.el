@@ -58,6 +58,9 @@
 (after-load 'ruby-compilation
   (defalias 'rake 'ruby-compilation-rake))
 
+
+;;; Rake
+(require 'rake)
 
 
 ;;; Robe
