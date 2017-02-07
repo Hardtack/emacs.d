@@ -90,11 +90,6 @@
   (add-hook hook 'inferior-js-keys-mode))
 
 
-;;; Flow
-(load-file (expand-file-name "site-lisp/flow-for-emacs/flow.el" user-emacs-directory))
-(require 'flow)
-
-
 ;;; Use emacsclient as REACT_EDITOR
 (setenv "REACT_EDITOR" "emacsclient")
 
