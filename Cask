@@ -41,7 +41,6 @@
 (depends-on "guide-key") ; Key guide
 (depends-on "guide-key-tip") ; Key guides in tip
 (depends-on "session") ; Save-restore variables
-(depends-on "frame-restore") ; Save-restore frames
 (depends-on "projectile")
 (depends-on "speedbar")
 (depends-on "projectile-speedbar")
@@ -65,7 +64,6 @@
 (depends-on "auto-complete")
 (depends-on "auto-compile")
 (depends-on "regex-tool")
-(depends-on "mmm-mode")
 (depends-on "sr-speedbar")
 (depends-on "flycheck")
 (depends-on "yasnippet")
@@ -116,6 +114,7 @@
 (depends-on "pip-requirements")
 (depends-on "virtualenvwrapper")
 (depends-on "jedi")
+(depends-on "python-docstring")
 ;; Ruby dev
 (depends-on "ruby-mode")
 (depends-on "ruby-hash-syntax")

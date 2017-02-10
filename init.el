@@ -67,7 +67,6 @@
 (require 'init-windows)
 (require 'init-sessions)
 (require 'init-fonts)
-(require 'init-mmm)
 (require 'init-project)
 (require 'init-speedbar)
 (require 'init-eshell)
