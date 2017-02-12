@@ -64,7 +64,18 @@
 (after-load 'flycheck
   (require 'flycheck-flow)
   (flycheck-add-mode 'javascript-flow 'js-jsx-mode)
-  (flycheck-add-next-checker 'javascript-flow 'javascript-eslint))
+  (flycheck-add-next-checker 'javascript-flow 'javascript-eslint)
+
+  ;; Check files only available by `flow ls'
+  (defun flycheck-flow--predicate ()
+    "Alternative flycheck predication."
+    (and (flycheck-buffer-saved-p)
+         buffer-file-name
+         (file-exists-p buffer-file-name)
+         (locate-dominating-file buffer-file-name ".flowconfig")
+         (let* ((flow (flycheck-checker-executable 'javascript-flow))
+                (lines (process-lines flow "ls")))
+           (member (file-truename buffer-file-name) lines)))))
 
 ;; Use locally installed flow if available
 (defun -find-local-flow ()
@@ -74,6 +85,7 @@
                 "node_modules/.bin/flow")))
     (if (and flow (file-executable-p flow))
         (expand-file-name "node_modules/.bin/flow" flow) nil)))
+
 (defun use-flow-from-node-modules ()
   "Use locally installed flow if available."
   (let* ((flow (-find-local-flow)))
