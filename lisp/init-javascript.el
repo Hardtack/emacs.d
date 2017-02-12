@@ -66,6 +66,20 @@
   (flycheck-add-mode 'javascript-flow 'js-jsx-mode)
   (flycheck-add-next-checker 'javascript-flow 'javascript-eslint))
 
+;; Use locally installed flow if available
+(defun -find-local-flow ()
+  "Find locally installed flow."
+  (let* ((flow (locate-dominating-file
+                (or (buffer-file-name) default-directory)
+                "node_modules/.bin/flow")))
+    (if (and flow (file-executable-p flow))
+        (expand-file-name "node_modules/.bin/flow" flow) nil)))
+(defun use-flow-from-node-modules ()
+  "Use locally installed flow if available."
+  (let* ((flow (-find-local-flow)))
+    (when flow
+      (setq-local flycheck-javascript-flow-executable flow))))
+(add-hook 'flycheck-mode-hook #'use-flow-from-node-modules)
 
 
 ;;; Coffeescript
