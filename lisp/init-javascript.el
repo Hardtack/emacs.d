@@ -60,6 +60,14 @@
 (add-hook 'flycheck-mode-hook #'use-eslint-from-node-modules)
 
 
+;;; Setup flow type checker
+(after-load 'flycheck
+  (require 'flycheck-flow)
+  (flycheck-add-mode 'javascript-flow 'js-jsx-mode)
+  (flycheck-add-next-checker 'javascript-flow 'javascript-eslint))
+
+
+
 ;;; Coffeescript
 
 (after-load 'coffee-mode

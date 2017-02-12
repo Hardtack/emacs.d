@@ -91,6 +91,7 @@
 (depends-on "coffee-mode")
 ;; Javascript
 (depends-on "js-comint") ; inf-js
+(depends-on "flycheck-flow") ; Flow typechecker
 ;; Emacs Lisp dev
 (depends-on "elisp-slime-nav") ; Goto-definition
 (depends-on "lively")
