@@ -65,7 +65,7 @@
   (require 'flycheck-flow)
   (flycheck-add-mode 'javascript-flow 'js-jsx-mode)
   (flycheck-add-next-checker 'javascript-flow 'javascript-eslint))
-(setq flycheck-javascript-flow-args '("--respect-pragma"))
+(setq-default flycheck-javascript-flow-args '("--respect-pragma"))
 
 
 ;; Use locally installed flow if available
